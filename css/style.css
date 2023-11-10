@@ -1,0 +1,217 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: "Kumbh Sans";
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fefefe;
+}
+
+header {
+    width: 100%;
+    height: 80px;
+    background: #363636;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 100px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fb8904;
+}
+
+.hamburger {
+    display: none;
+}
+
+.nav-bar ul {
+    display: flex;
+}
+
+.nav-bar ul li a {
+    display: block;
+    color: #fefefe;
+    font-size: 20px;
+    padding: 10px 25px;
+    border-radius: 50px;
+    transition: 0.2s;
+    margin: 0 5px;
+}
+
+.nav-bar ul li a:hover {
+    color: #0066ff;
+    background: #fefefe;
+}
+
+.nav-bar ul li a.active {
+    color: #0066ff;
+    background: #fefefe;
+}
+
+.nav-bar ul li a.connect {
+    color: #fefefe;
+    background: #0066ff;
+}
+
+@media only screen and (max-width: 1320px) {
+    header {
+        padding: 0 50 px;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    header {
+        padding: 0 30 px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+    .hamburger .line {
+        width: 30px;
+        height: 3px;
+        background: #fefefe;
+        margin: 6px 0;
+    }
+
+    .nav-bar {
+        height: 0;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        background: #363636;
+        transition: 0.5s;
+        overflow: hidden;
+    }
+
+    .nav-bar.active {
+        height: 450px;
+    }
+
+    .nav-bar ul {
+        display: block;
+        width: fit-content;
+        margin: 80px auto 0 auto;
+        text-align: center;
+        transition: 0.5s;
+        opacity: 0;
+    }
+
+    .nav-bar.active ul {
+        opacity: 1;
+    }
+
+    .nav-bar ul li a {
+        margin-bottom: 12px;
+    }
+}
+
+/* Première section CSS */
+.main {
+    background-color: #fefefe;
+}
+
+.main_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-self: center;
+    margin: 0 auto;
+    height: 90vh;
+    background-color: #fefefe;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    padding: 0 50px;
+}
+
+.main_content h2 {
+    font-size: 3rem;
+}
+
+.main_content p {
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.main_btn {
+    font-size: 1rem;
+    color: #0066ff;
+    background-color: #fefefe;
+    padding: 14px 32px;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: #24292E;
+    color: #fff;
+    margin-top: 2rem;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.35s;
+    outline: none;
+}
+
+.main_btn a {
+    position: relative;
+    z-index: 2;
+    color: #0066ff;
+    text-decoration: none;
+}
+
+#main_img {
+    height: 70%;
+    width: 140%;
+}
+
+@media screen and (max-width: 900px) {
+    .main_container {
+        display: grid;
+        grid-template-columns: auto;
+        align-items: center;
+        justify-self: center;
+        width: 100%;
+        margin: 0 auto;
+        height: 90vh;
+    }
+
+    .main_content {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .main_content h2 {
+        font-size: 3rem;
+    }
+
+    .main_content p {
+        margin-top: 1rem;
+        font-size: 1.5rem;
+    }
+
+    #main_img {
+        height: 50%;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 1320px) and (min-width:900px ) {
+    #main_img {
+        height: 30%;
+        width: 100%;
+    }
+}
