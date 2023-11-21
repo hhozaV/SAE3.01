@@ -25,7 +25,9 @@ header {
     font-size: 28px;
     font-weight: bold;
     color: #fb8904;
+    text-decoration: none;
 }
+
 
 .hamburger {
     display: none;
@@ -174,7 +176,7 @@ header {
 }
 
 #main_img {
-    height: 70%;
+    height: 50%;
     width: 140%;
 }
 
@@ -310,7 +312,7 @@ header {
 
 
 .survie {
-    font-size: 60px;
+    font-size: 50px;
     text-align: center;
     margin-top: 40px;
 }
