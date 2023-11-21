@@ -60,71 +60,6 @@ header {
     background: #0066ff;
 }
 
-.lessons-section {
-    width: 100%;
-    padding-bottom: 50px;
-}
-
-.lessons-section h1 {
-    text-align: center;
-    padding: 25px 0px;
-}
-
-.lessons-container {
-    width: 1170px;
-    margin: auto;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    display: flex;
-    /* border: 1px solid #0066ff; */
-}
-
-.lessons-items {
-    flex-basis: 23%;
-    margin: 10px 0px; 
-    text-align: center;
-    padding: 20px 0px;
-    background: white;
-    box-shadow: 0px 0px 10px 3px lightgrey;
-    border: none;
-    border-radius: 10px;
-}
-
-.lessons-items h3 {
-    padding: 10px 0px;
-}
-
-.lessons-items p {
-    font-size: 13px;
-    padding: 10px;
-}
-
-.lessons-items a {
-    color: white;
-}
-
-.lessons-items button {
-    background: #0066ff;
-    padding: 10px 25px;
-    border: none;
-    border-radius: 10px;
-    margin: 10px 0px;
-    color: white;
-}
-
-.lessons-items:hover {
-    background: #0066ff;
-}
-
-.lessons-items:hover h3, .lessons-items:hover p {
-    color: white;
-}
-
-.lessons-items:hover button, .lessons-items:hover a {
-    background: white;
-    color: #0066ff;
-}
-
 @media only screen and (max-width: 1320px) {
     header {
         padding: 0 50 px;
@@ -278,5 +213,84 @@ header {
     #main_img {
         height: 30%;
         width: 100%;
+    }
+}
+
+
+/* Lessons CSS */
+
+.lessons-section {
+    width: 100%;
+    padding-bottom: 50px;
+}
+
+.lessons-section h1 {
+    text-align: center;
+    padding: 25px 0px;
+}
+
+.lessons-container {
+    width: 1170px;
+    margin: auto;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    display: flex;
+    /* border: 1px solid #0066ff; */
+}
+
+.lessons-items {
+    flex-basis: 23%;
+    margin: 10px 0px; 
+    text-align: center;
+    padding: 20px 0px;
+    background: white;
+    box-shadow: 0px 0px 10px 3px lightgrey;
+    border: none;
+    border-radius: 10px;
+}
+
+.lessons-items h3 {
+    padding: 10px 0px;
+}
+
+.lessons-items p {
+    font-size: 13px;
+    padding: 10px;
+}
+
+.lessons-items a {
+    color: white;
+}
+
+.lessons-items button {
+    background: #0066ff;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 10px;
+    margin: 10px 0px;
+    color: white;
+}
+
+.lessons-items:hover {
+    background: #0066ff;
+}
+
+.lessons-items:hover h3, .lessons-items:hover p {
+    color: white;
+}
+
+.lessons-items:hover button, .lessons-items:hover a {
+    background: white;
+    color: #0066ff;
+}
+
+@media screen and (max-width: 1200px) {
+    .lessons-container {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .lessons-items {
+        margin: 10px;
     }
 }
