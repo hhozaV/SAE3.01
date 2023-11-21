@@ -294,3 +294,24 @@ header {
         margin: 10px;
     }
 }
+
+.container {
+    display: flex;
+    flex-direction: column; /* Place les éléments en colonne */
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.warning {
+    max-width: 20%;
+    height: auto;
+}
+
+
+.survie {
+    font-size: 60px;
+    text-align: center;
+    margin-top: 40px;
+}
+
