@@ -23,9 +23,9 @@
     <input type="checkbox" id="answer_d">
     <label for="answer_d" id="label_d"></label><br>
 
-    <button id="easy" data-difficulty="easy">Question trop facile</button>
+    <button id="easy" data-difficulty="easy">Question trop difficile</button>
     <button id="validate">Valider</button>
-    <button id="hard" data-difficulty="hard">Question trop difficile</button>
+    <button id="hard" data-difficulty="hard">Question trop facile</button>
 
     <script>
         const questionElement = document.querySelector('#question');
@@ -40,10 +40,11 @@
         console.log('Selected Theme:', theme);
 
         let difficulty = 'Easy';
+        let currentQuestionData;
 
         easyButton.addEventListener('click', () => {
             if (difficulty === 'Easy') {
-                // Impossible d'être plus facile donc pas de changement
+                alert('Il n\'y a pas de difficulté plus facile ...');
             } else if (difficulty === 'Medium') {
                 difficulty = 'Easy';
                 updateDifficulty();
@@ -65,7 +66,7 @@
                 updateDifficulty();
                 fetchQuestion();
             } else if (difficulty === 'Hard') {
-                // Impossible d'être plus difficile donc pas de changement
+                alert('Il n\'y a pas de difficulté plus difficile !');
             }
         });
 
@@ -83,13 +84,14 @@
         }
         function fetchQuestion() {
             // Construction de l'url pour l'api, seulement la difficultée qui change dans l'url
-            const apiUrl = "https://quizapi.io/api/v1/questions?apiKey=oEAYIMa1boNGNt83vjKFMfTR5bL5b7Tac9n2QwdR&category=" + theme + "&difficulty=" + difficulty + "&limit=1";
+            const apiUrl = "https://quizapi.io/api/v1/questions?apiKey=rQhtODxlCFj6WAfGessemTv2p46af9cIwwcpoLBr&category=" + theme + "&difficulty=" + difficulty + "&limit=1";
 
             fetch(apiUrl)
                 .then(response => response.json())
                 .then(decodedJson => {
                     console.log("API :", decodedJson);
                     const questionData = decodedJson[0];
+                    currentQuestionData = questionData;
                     displayQuestion(questionData);
                 });
         }
@@ -113,6 +115,36 @@
                 checkbox.checked = false;
             });
         }
+
+        function checkAnswer(questionData) {
+            const selectedAnswers = [];
+            checkboxes.forEach((checkbox, index) => {
+                const answerKey = `answer_${String.fromCharCode(97 + index)}`;
+                if (checkbox.checked) {
+                    selectedAnswers.push(answerKey);
+                }
+            });
+
+            if (selectedAnswers.length === 0) {
+                alert("Tu n'as sélectionné aucune réponse !");
+                return;  // Arrête la fonction ici car aucune réponse n'est sélectionnée
+            }
+
+            const isCorrect = selectedAnswers.every(answerKey => {
+                return questionData.correct_answers[`${answerKey}_correct`] === 'true';
+            });
+
+            if (isCorrect) {
+                alert('Tu as répondu correctement, bravo !');
+            } else {
+                alert('Tu as eu faux, révise la leçon !');
+            }
+        }
+
+        validateButton.addEventListener('click', () => {
+            checkAnswer(currentQuestionData);
+        });
+
         fetchQuestion();
     </script>
 
