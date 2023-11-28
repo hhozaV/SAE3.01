@@ -13,33 +13,84 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <link rel="icon" href="img/cerveau.png" type="image/x-icon">
 </head>
 <body>
-    <header>
-        <div class="logo">Eduquiz</div>
-        <div class="hamburger">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
+
+    <div class="form-body">
+        <div class="form-container">
+            <div class="forms">
+                <!-- Login Page -->
+                <div class="form-login">
+                    <span class="title">Se connecter</span>
+
+                    <form action="#">
+                        <div class="input-field">
+                            <input type="text" placeholder="E-Mail" required>
+                            <i class="uil uil-envelope icon"></i>
+                        </div>
+                        <div class="input-field">
+                            <input type="text" placeholder="Mot de passe" required>
+                            <i class="uil uil-lock icon"></i>
+                            <i class="uil uil-eye-slash showHidePw"></i>
+                        </div>
+
+                        <div class="forgot-text">
+                            <a href="#" class="text">Mot de passe oublié ?</a>
+                        </div>
+
+                        <div class="input-field button">
+                            <input type="button" value="Se connecter">
+                        </div>
+                    </form>
+
+                    <div class="login-signup">
+                        <span class="text">Pas encore inscrit ?<a href="#" class="text signup-text">S'inscrire</a></span>
+                    </div>
+                    <div class="login-signup">
+                        <span class="text"><a href="index.html" class="text signup-text">Retournez à l'acceuil</a></span>
+                    </div>
+                </div>
+
+                <!-- Register Page -->
+                <div class="form-login">
+                    <span class="title">S'inscrire</span>
+
+                    <form action="#">
+                        <div class="input-field">
+                            <input type="text" placeholder="Nom" required>
+                            <i class="uil uil-user"></i>
+                        </div>
+                        <div class="input-field">
+                            <input type="text" placeholder="E-Mail" required>
+                            <i class="uil uil-envelope icon"></i>
+                        </div>
+                        <div class="input-field">
+                            <input type="text" placeholder="Mot de passe" required>
+                            <i class="uil uil-lock icon"></i>
+                            <i class="uil uil-eye-slash showHidePw"></i>
+                        </div>
+
+                        <div class="forgot-text">
+                            <a href="#" class="text">Mot de passe oublié ?</a>
+                        </div>
+
+                        <div class="input-field button">
+                            <input type="button" value="Se connecter">
+                        </div>
+                    </form>
+
+                    <div class="login-signup">
+                        <span class="text">Pas encore inscrit ?<a href="#" class="text signup-text">S'inscrire</a></span>
+                    </div>
+                    <div class="login-signup">
+                        <span class="text"><a href="index.html" class="text signup-text">Retournez à l'acceuil</a></span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <nav class="nav-bar">
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="themes.html">Thèmes</a></li>
-                <li><a href="lessons.html">Leçons</a></li>
-                <li><a href="survie.html">Mode Survie</a></li>
-                <li><a href="login.html" class="connect">Se connecter</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-    <div class="container">
-        <img class="warning "src="img/warning.svg" alt="Warning"/>
-        <h1 class="survie">Disponible prochainement</h1>
-    </div>
-    
+    </div>  
 
     <script>
         hamburger = document.querySelector(".hamburger");

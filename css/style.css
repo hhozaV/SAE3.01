@@ -317,3 +317,138 @@ header {
     margin-top: 40px;
 }
 
+
+/* Login & Register CSS */
+
+.form-body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0066ff;
+}
+
+
+.form-container {
+    position: relative;
+    max-width: 430px;
+    width: 100%;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container .forms {
+    padding: 30px;
+}
+
+.form-container .forms .title {
+    position: relative;
+    font-size: 27px;
+    font-weight: 600;
+}
+
+.forms .title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background-color: #0066ff;
+    border-radius: 25px;
+}
+
+.forms .input-field {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.input-field input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 0 35px;
+    border-bottom: 2px solid #ccc;
+    border-top: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid) {
+    border-bottom-color: #0066ff;
+}
+
+.input-field i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 23px;
+}
+
+.input-field input:is(:focus, :valid) ~ i {
+    color: #0066ff;
+}
+
+.input-field i.icon {
+    left: 0;
+}
+
+.input-field i.showHidePw {
+    right: 0;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.forms .forgot-text {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.forms .text {
+    color: #333;
+    font-size: 14px;
+}
+
+.forms a {
+    text-decoration: none;
+}
+
+.forms a.text {
+    color: #0066ff;
+    text-decoration: none;
+}
+
+.forms a:hover {
+    text-decoration: underline;
+}
+
+.forms .button {
+    margin-top: 35px;
+}
+
+.forms .button input {
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 7px;
+    background-color: #0066ff;
+    cursor: pointer;
+}
+
+.button input:hover{
+    background-color: #265df2;
+}
+
+.forms .login-signup {
+    margin-top: 30px;
+    text-align: center;
+
+}
