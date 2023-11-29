@@ -40,25 +40,37 @@
                 <img src="img/linux.png"/>
                 <h3>Linux</h3>
                 <p>Linux ou GNU/Linux — plus rarement GNU+Linux — est une famille de systèmes d'exploitation open source de type Unix fondés sur le noyau Linux créé en 1991 par Linus Torvalds. De nombreuses distributions Linux ont depuis vu le jour.</p>
-                <button><a href="index.html">Jouer</a></button>
+                <button><a id="theme_linux" onclick="redirectToQCM('linux')">Jouer</a></button>
             </div>
             <div class="lessons-items">
                 <img src="img/sql.png"/>
                 <h3>SQL</h3>
                 <p>SQL est un langage informatique normalisé servant à exploiter des bases de données relationnelles. La partie langage de manipulation des données de SQL permet de rechercher, d'ajouter, de modifier ou de supprimer des données dans les bases de données relationnelles.</p>
-                <button><a href="index.html">Jouer</a></button>
-            </div>
-            <div class="lessons-items">
-                <img src="img/bash.png"/>
-                <h3>Bash</h3>
-                <p>Bash est un interpréteur de commande (shell) compatible sh qui exécute les commandes lues depuis l'entrée standard, ou depuis un fichier. Bash incorpore également des fonctionnalités provenant des interpréteurs Korn et C-shell (ksh et csh).</p>
-                <button><a href="index.html">Jouer</a></button>
+                <button><a id="theme_sql" onclick="redirectToQCM('sql')">Jouer</a></button>
             </div>
             <div class="lessons-items">
                 <img src="img/code.png"/>
                 <h3>Code</h3>
                 <p>Le codage en informatique est le processus de création de programmes informatiques, également appelés codes sources, qui permettent à un ordinateur de réaliser des tâches précises. Le codage consiste à écrire du code en utilisant un langage de programmation.</p>
-                <button><a href="index.html">Jouer</a></button>
+                <button><a id="theme_code" onclick="redirectToQCM('code')">Jouer</a></button>
+            </div>
+            <div class="lessons-items">
+                <img src=""/>
+                <h3>CMS</h3>
+                <p>CMS description ...........</p>
+                <button><a id="theme_cms" onclick="redirectToQCM('cms')">Jouer</a></button>
+            </div>
+            <div class="lessons-items">
+                <img src=""/>
+                <h3>Docker</h3>
+                <p>Docker description ...........</p>
+                <button><a id="theme_docker" onclick="redirectToQCM('docker')">Jouer</a></button>
+            </div>
+            <div class="lessons-items">
+                <img src=""/>
+                <h3>DevOps</h3>
+                <p>DevOps description ...........</p>
+                <button><a id="theme_devops" onclick="redirectToQCM('devops')">Jouer</a></button>
             </div>
         </div>
     </div>
@@ -68,6 +80,14 @@
         hamburger.onclick = function() {
             navBar = document.querySelector(".nav-bar");
             navBar.classList.toggle("active");
+        }
+
+        function redirectToQCM(theme) {
+            // Stocker le thème dans le stockage local
+            localStorage.setItem('selectedTheme', theme);
+
+            // Rediriger vers la page 2
+            window.location.href = 'qcm.html';
         }
     </script>
 
