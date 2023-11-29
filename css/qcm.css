@@ -1,0 +1,56 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.qcm {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+#question {
+    margin-bottom: 20px;
+}
+
+.answers {
+    margin-bottom: 20px;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.validate {
+    text-align: center;
+}
+
+.qcm button {
+    background: #0066ff;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 10px;
+    margin: 10px 0px;
+    color: white;
+}
+
+.qcm a {
+    text-decoration: none;
+}
+
+.qcm a.text {
+    color: #0066ff;
+    text-decoration: none;
+}
