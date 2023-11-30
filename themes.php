@@ -24,59 +24,59 @@
         </div>
         <nav class="nav-bar">
             <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="themes.html">Thèmes</a></li>
-                <li><a href="lessons.html" class="active">Leçons</a></li>
-                <li><a href="survie.html">Mode Survie</a></li>
-                <li><a href="login.html" class="connect">Se connecter</a></li>
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="themes.php" class="active">Thèmes</a></li>
+                <li><a href="lessons.php">Leçons</a></li>
+                <li><a href="survie.php">Mode Survie</a></li>
+                <li><a href="login.php" class="connect">Se connecter</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="lessons-section">
-        <h1>Nos leçons</h1>
+        <h1>Nos thèmes</h1>
         <div class="lessons-container">
             <div class="lessons-items">
                 <img src="img/linux.png"/>
                 <h3>Linux</h3>
                 <p>Linux ou GNU/Linux — plus rarement GNU+Linux — est une famille de systèmes d'exploitation open source de type Unix fondés sur le noyau Linux créé en 1991 par Linus Torvalds. De nombreuses distributions Linux ont depuis vu le jour.</p>
-                <button><a href="linux.html">Leçons</a></button>
+                <button><a id="theme_linux" onclick="redirectToQCM('linux')">Jouer</a></button>
             </div>
             <div class="lessons-items">
                 <img src="img/sql.png"/>
                 <h3>SQL</h3>
                 <p>SQL est un langage informatique normalisé servant à exploiter des bases de données relationnelles. La partie langage de manipulation des données de SQL permet de rechercher, d'ajouter, de modifier ou de supprimer des données dans les bases de données relationnelles.</p>
-                <button><a href="sql.html">Leçons</a></button>
+                <button><a id="theme_sql" onclick="redirectToQCM('sql')">Jouer</a></button>
             </div>
             <div class="lessons-items">
                 <img src="img/code.png"/>
                 <h3>Code</h3>
                 <p>Le codage en informatique est le processus de création de programmes informatiques, également appelés codes sources, qui permettent à un ordinateur de réaliser des tâches précises. Le codage consiste à écrire du code en utilisant un langage de programmation.</p>
-                <button><a href="code.html">Leçons</a></button>
+                <button><a id="theme_code" onclick="redirectToQCM('code')">Jouer</a></button>
             </div>
             <div class="lessons-items">
                 <img src="img/cms.png"/>
                 <h3>CMS</h3>
                 <p>CMS est l'acronyme de Content Management System, c'est-à-dire système de gestion de contenu. Il s'agit d'un logiciel en ligne grâce auquel il est possible de créer, de gérer et de modifier facilement un site web, sans connaissances en langage informatique.</p>
-                <button><a href="cms.html">Leçons</a></button>
+                <button><a id="theme_cms" onclick="redirectToQCM('cms')">Jouer</a></button>
             </div>
             <div class="lessons-items">
                 <img src="img/docker.png"/>
                 <h3>Docker</h3>
                 <p>Docker est une plateforme logicielle qui permet de créer, déployer et exécuter des applications dans des conteneurs légers et portables. Ces conteneurs encapsulent tout le nécessaire pour que l'application fonctionne, simplifiant ainsi le déploiement.</p>
-                <button><a href="docker.html">Leçons</a></button>
+                <button><a id="theme_docker" onclick="redirectToQCM('docker')">Jouer</a></button>
             </div>
             <div class="lessons-items">
                 <img src="img/devops.png"/>
                 <h3>DevOps</h3>
                 <p>Le devops est un mouvement en ingénierie informatique et une pratique technique visant à l'unification du développement logiciel et de l'administration des infrastructures informatiques, notamment l'administration système.</p>
-                <button><a href="devops.html">Leçons</a></button>
+                <button><a id="theme_devops" onclick="redirectToQCM('devops')">Jouer</a></button>
             </div>
             <div class="lessons-items">
                 <img src="img/bash.png"/>
                 <h3>Bash</h3>
                 <p>Bash est un interpréteur de commande (shell) compatible sh qui exécute les commandes lues depuis l'entrée standard, ou depuis un fichier. Bash incorpore également des fonctionnalités provenant des interpréteurs Korn et C-shell (ksh et csh).</p>
-                <button><a href="bash.html">Leçons</a></button>
+                <button><a id="theme_bash" onclick="redirectToQCM('bash')">Jouer</a></button>
             </div>
         </div>
     </div>
@@ -86,6 +86,14 @@
         hamburger.onclick = function() {
             navBar = document.querySelector(".nav-bar");
             navBar.classList.toggle("active");
+        }
+
+        function redirectToQCM(theme) {
+            // Stocker le thème dans le stockage local
+            localStorage.setItem('selectedTheme', theme);
+
+            // Rediriger vers la page 2
+            window.location.href = 'qcm.php';
         }
     </script>
 

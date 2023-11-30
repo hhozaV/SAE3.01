@@ -45,7 +45,7 @@
         </div>
 
         <div class="login-signup">
-            <span class="text"><a href="index.html" class="text signup-text">Retournez à l'acceuil</a></span>
+            <span class="text"><a href="index.php" class="text signup-text">Retournez à l'acceuil</a></span>
         </div>
     </div>
 
@@ -149,18 +149,18 @@
 
             if (selectedAnswers.length === 0) {
                 alert("Tu n'as sélectionné aucune réponse !");
-                return;  // Arrête la fonction ici car aucune réponse n'est sélectionnée
+                return;
             }
 
             const isCorrect = selectedAnswers.every(answerKey => {
                 return questionData.correct_answers[`${answerKey}_correct`] === 'true';
             });
 
-            if (isCorrect) {
-                alert('Tu as répondu correctement, bravo !');
-            } else {
-                alert('Tu as eu faux, révise la leçon !');
-            }
+            // Stocker le résultat dans le stockage local
+            localStorage.setItem("isCorrect", isCorrect);
+
+            // Rediriger vers la page switch.php
+            window.location.href = "switch.php";
         }
 
         validateButton.addEventListener('click', () => {

@@ -25,11 +25,11 @@
         </div>
         <nav class="nav-bar">
             <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="themes.html">Thèmes</a></li>
-                <li><a href="lessons.html">Leçons</a></li>
-                <li><a href="survie.html" class="active">Mode Survie</a></li>
-                <li><a href="login.html" class="connect">Se connecter</a></li>
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="themes.php">Thèmes</a></li>
+                <li><a href="lessons.php">Leçons</a></li>
+                <li><a href="survie.php" class="active">Mode Survie</a></li>
+                <li><a href="login.php" class="connect">Se connecter</a></li>
             </ul>
         </nav>
     </header>

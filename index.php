@@ -25,11 +25,11 @@
         </div>
         <nav class="nav-bar">
             <ul>
-                <li><a href="index.html" class="active">Accueil</a></li>
-                <li><a href="themes.html">Thèmes</a></li>
-                <li><a href="lessons.html">Leçons</a></li>
-                <li><a href="survie.html">Mode Survie</a></li>
-                <li><a href="login.html" class="connect">Se connecter</a></li>
+                <li><a href="index.php" class="active">Accueil</a></li>
+                <li><a href="themes.php">Thèmes</a></li>
+                <li><a href="lessons.php">Leçons</a></li>
+                <li><a href="survie.php">Mode Survie</a></li>
+                <li><a href="login.php" class="connect">Se connecter</a></li>
             </ul>
         </nav>
     </header>
@@ -40,7 +40,7 @@
             <div class="main_content">
                 <h2>Le meilleur moyen d'apprendre facilement et efficacement</h2>
                 <P>Eduquiz te permet d’apprendre sur différents thèmes informatiques de manière simple et ludique. Si tu veux t'améliorer en informatique, tu es au bon endroit.</p>
-                <button class="main_btn"><a href="themes.html">Je découvre les quizz</a></button>
+                <button class="main_btn"><a href="themes.php">Je découvre les quizz</a></button>
             </div>
             <img src="img/firstImg.png" alt="firstImage" id="main_img">
         </div>
@@ -52,7 +52,7 @@
             <div class="main_content">
                 <h2>Les leçons</h2>
                 <P>Nous proposons aussi des leçons adaptées à tout les niveaux, de débutant à joueur expérimenté pour tout les thèmes disponibles sur notre site. N’hésite pas à venir en apprendre un peu plus sur chaque thème pour être meilleur aux quizz.</p>
-                <button class="main_btn"><a href="lessons.html">Les leçons</a></button>
+                <button class="main_btn"><a href="lessons.php">Les leçons</a></button>
             </div>
             <img src="img/lessons.png" alt="secondImage" id="main_img">
         </div>
@@ -66,7 +66,7 @@
                 <P>Grâce à ce mode de jeu, tu pourras tester tes compétences et te comparer
                     aux autres grâce au classement du mode. Ici, le but est simple, répondre à
                     des questions sur les différents thèmes le plus rapidement possible</p>
-                <button class="main_btn"><a href="survie.html">Mode survie</a></button>
+                <button class="main_btn"><a href="survie.php">Mode survie</a></button>
             </div>
             <img src="img/survie.png" alt="thirdImage" id="main_img">
         </div>
