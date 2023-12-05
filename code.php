@@ -34,7 +34,7 @@
     </header>
 
     <div class="lessons-section">
-        <h1>Leçons sur le thème SQL</h1>
+        <h1>Leçons sur le thème Code</h1>
         <div class="lessons-container">
             <div class="lessons-items">
                 <img src="img/code.png"/>
