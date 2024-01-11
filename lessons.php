@@ -16,33 +16,7 @@
 </head>
 <body>
     <header>
-        <div class="logo">Eduquiz</div>
-        <div class="hamburger">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
-        <nav class="nav-bar">
-            <ul>
-                <li><a href="index.php">Accueil</a></li>
-                <li><a href="themes.php">Thèmes</a></li>
-                <li><a href="lessons.php" class="active">Leçons</a></li>
-                <li><a href="survie.php">Mode Survie</a></li>
-                <?php
-                // Début de la session
-                session_start();
-                
-                // Vérifier si l'utilisateur est connecté
-                if (isset($_SESSION["utilisateur_username"])) {
-                    // Afficher le bouton Profil si l'utilisateur est connecté
-                    echo '<li><a href="profil.php" class="connect">Profil</a></li>';
-                } else {
-                    // Afficher le bouton Se Connecter si l'utilisateur n'est pas connecté
-                    echo '<li><a href="login.php" class="connect">Se connecter</a></li>';
-                }
-                ?>
-            </ul>
-        </nav>
+        <?php include "header.php"; ?>
     </header>
 
     <div class="lessons-section">

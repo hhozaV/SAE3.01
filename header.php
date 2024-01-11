@@ -16,7 +16,6 @@
     <link rel="icon" href="img/cerveau.png" type="image/x-icon">
 </head>
 <body>
-
     <div class="logo">Eduquiz</div>
     <div class="hamburger">
         <div class="line"></div>
@@ -25,10 +24,10 @@
     </div>
     <nav class="nav-bar">
         <ul>
-            <li><a href="index.php" class="active">Accueil</a></li>
-            <li><a href="themes.php">Thèmes</a></li>
-            <li><a href="lessons.php">Leçons</a></li>
-            <li><a href="survie.php">Mode Survie</a></li>
+            <li><a href="index.php" class="nav-link">Accueil</a></li>
+            <li><a href="themes.php" class="nav-link">Thèmes</a></li>
+            <li><a href="lessons.php" class="nav-link">Leçons</a></li>
+            <li><a href="survie.php" class="nav-link">Mode Survie</a></li>
 
             <?php
             // Début de la session
@@ -37,12 +36,27 @@
             // Vérifier si l'utilisateur est connecté
             if (isset($_SESSION["utilisateur_username"])) {
                 // Afficher le bouton Profil si l'utilisateur est connecté
-                echo '<li><a href="profil.php" class="connect">Profil</a></li>';
+                echo '<li><a href="profil.php" class="nav-link connect">Profil</a></li>';
             } else {
                 // Afficher le bouton Se Connecter si l'utilisateur n'est pas connecté
-                echo '<li><a href="login.php" class="connect">Se connecter</a></li>';
+                echo '<li><a href="login.php" class="nav-link connect">Se connecter</a></li>';
             }
             ?>
         </ul>
     </nav>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Récupérer le chemin de la page actuelle
+            var currentPage = window.location.pathname.split("/").pop();
+
+            // Parcourir les liens de la navigation et ajouter la classe "active" au lien correspondant à la page actuelle
+            $(".nav-link").each(function () {
+                if ($(this).attr("href") == currentPage) {
+                    $(this).addClass("active");
+                }
+            });
+        });
+    </script>
 </body>
+

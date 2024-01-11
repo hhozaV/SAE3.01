@@ -20,7 +20,6 @@
 </head>
 
 <body>
-
     <div class="qcm">
         <h1 id="title">Question du QCM</h1>
         <p id="question"></p>
