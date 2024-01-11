@@ -15,7 +15,8 @@ if ($connexion->connect_error) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
-    $motDePasse = $_POST["mot_de_passe"];
+    $motDePasseActuel = $_POST["mot_de_passe"];
+    $nouveauMotDePasse = $_POST["nouveau_mot_de_passe"];
 
     // Vérifier les identifiants dans la base de données
     $requete = $connexion->prepare("SELECT username, password FROM utilisateurs WHERE email = ?");
@@ -25,14 +26,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($resultat->num_rows > 0) {
         $utilisateur = $resultat->fetch_assoc();
-        if (password_verify($motDePasse, $utilisateur["password"])) {
-            // Identifiants corrects, rediriger vers index.php
-            session_start();
-            $_SESSION["utilisateur_username"] = $utilisateur["username"];
+        if (password_verify($motDePasseActuel, $utilisateur["password"])) {
+            // Mot de passe actuel correct, mettre à jour le mot de passe
+            $nouveauMotDePasseHash = password_hash($nouveauMotDePasse, PASSWORD_BCRYPT);
+
+            $updateRequete = $connexion->prepare("UPDATE utilisateurs SET password = ? WHERE email = ?");
+            $updateRequete->bind_param("ss", $nouveauMotDePasseHash, $email);
+            $updateRequete->execute();
+            $updateRequete->close();
+
+            // Redirection vers index.php ou autre page
             header("Location: index.php");
             exit();
         } else {
-            $erreur = "Mot de passe incorrect.";
+            $erreur = "Mot de passe actuel incorrect.";
         }
     } else {
         $erreur = "Adresse e-mail non enregistrée. Veuillez-vous inscrire";
@@ -43,7 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $connexion->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,38 +74,38 @@ $connexion->close();
 <div class="form-body">
         <div class="form-container">
             <div class="forms">
-                <!-- Login Page -->
-                <div class="form login">
-                    <span class="title">Se connecter</span>
+                <!-- Register Page -->
+                <div class="form-login">
+                    <span class="title">Modifier votre mot de passe</span>
 
-                    <!-- Formulaire de connexion -->
+                    <!-- Formulaire d'inscription -->
                     <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                        <div class="input-field">
+                    <div class="input-field">
                             <input type="email" name="email" placeholder="E-Mail" required>
                             <i class="uil uil-envelope icon"></i>
                         </div>
                         <div class="input-field">
-                            <input type="password" name="mot_de_passe" class="password" placeholder="Mot de passe" required>
+                            <input type="password" name="mot_de_passe" class="password" placeholder="mot de passe actuel" required>
+                            <i class="uil uil-lock icon"></i>
+                            <i class="uil uil-eye-slash showHidePw"></i>
+                        </div>
+                        <div class="input-field">
+                            <input type="password" name="nouveau_mot_de_passe" class="password" placeholder="Nouveau mot de passe" required>
                             <i class="uil uil-lock icon"></i>
                             <i class="uil uil-eye-slash showHidePw"></i>
                         </div>
 
+                        <!-- Affichage du message d'erreur -->
+                        <?php if (isset($erreur)) : ?>
+                            <div class="erreur-message"><?php echo $erreur; ?></div>
+                        <?php endif; ?>
+
                         <div class="input-field button">
-                            <input type="submit" value="Se connecter">
+                            <input type="submit" value="Sauvegarder">
                         </div>
                     </form>
-                    <div class="login-signup">
-                        <span class="text"><a href="passwordedit.php" class="text signup-text">Mot de passe oublié</a></span>
-                    </div>
 
-                    <!-- Affichage du message d'erreur -->
-                    <?php if (isset($erreur)) : ?>
-                        <div class="erreur-message"><?php echo $erreur; ?></div>
-                    <?php endif; ?>
-
-                    <div class="login-signup">
-                        <span class="text">Pas encore inscrit ?<a href="register.php" class="text signup-text">S'inscrire</a></span>
-                    </div>
+                    
                     <div class="login-signup">
                         <span class="text"><a href="index.php" class="text signup-text">Retournez à l'acceuil</a></span>
                     </div>
