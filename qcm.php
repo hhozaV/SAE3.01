@@ -37,10 +37,16 @@
             <label for="answer_d" id="label_d"></label><br>
         </div>
 
-        <div class="validate">
+        <div class="validate" id="validation-buttons">
             <button class="qcm_btn" id="easy" data-difficulty="easy">Question trop difficile</button>
             <button class="qcm_btn" id="validate">Valider</button>
             <button class="qcm_btn" id="hard" data-difficulty="hard">Question trop facile</button>
+        </div>
+
+        <div id="result-message"></div>
+
+        <div class="validate">
+            <button class="qcm_btn" id="next-question" style="display: none;">Question suivante</button>
         </div>
 
         <div class="login-signup">
@@ -56,6 +62,9 @@
         const easyButton = document.querySelector('#easy');
         const validateButton = document.querySelector('#validate');
         const hardButton = document.querySelector('#hard');
+
+        const nextQuestionButton = document.getElementById('next-question');
+        nextQuestionButton.addEventListener('click', loadNextQuestion);
 
         let theme = localStorage.getItem('selectedTheme');
         console.log('Selected Theme:', theme);
@@ -104,7 +113,6 @@
             }
         }
         function fetchQuestion() {
-            // Construction de l'url pour l'api, seulement la difficultée qui change dans l'url
             const apiUrl = "https://quizapi.io/api/v1/questions?apiKey=rQhtODxlCFj6WAfGessemTv2p46af9cIwwcpoLBr&category=" + theme + "&difficulty=" + difficulty + "&limit=1";
 
             fetch(apiUrl)
@@ -147,7 +155,7 @@
             });
 
             if (selectedAnswers.length === 0) {
-                alert("Tu n'as sélectionné aucune réponse !");
+                document.getElementById('result-message').textContent = "Tu n'as sélectionné aucune réponse !";
                 return;
             }
 
@@ -155,16 +163,35 @@
                 return questionData.correct_answers[`${answerKey}_correct`] === 'true';
             });
 
-            // Stocker le résultat dans le stockage local
-            localStorage.setItem("isCorrect", isCorrect);
+            const resultMessageElement = document.getElementById('result-message');
+            if (isCorrect) {
+                resultMessageElement.textContent = "Bravo ! Tu as eu la bonne réponse !";
+            } else {
+                resultMessageElement.textContent = "Désolé, ce n'est pas la bonne réponse...";
+            }
 
-            // Rediriger vers la page switch.php
-            window.location.href = "switch.php";
+            // Masquer les boutons de validation
+            const validationButtonsContainer = document.getElementById('validation-buttons');
+            validationButtonsContainer.style.display = 'none';
+
+            // Afficher le bouton "Question suivante"
+            const nextQuestionButton = document.getElementById('next-question');
+            nextQuestionButton.style.display = 'block';
         }
 
         validateButton.addEventListener('click', () => {
             checkAnswer(currentQuestionData);
         });
+
+
+        function loadNextQuestion() {
+            fetchQuestion();
+            document.getElementById('result-message').textContent = "";
+            document.getElementById('next-question').style.display = 'none';
+
+            const validationButtonsContainer = document.getElementById('validation-buttons');
+            validationButtonsContainer.style.display = 'block';
+        }
 
         fetchQuestion();
     </script>
