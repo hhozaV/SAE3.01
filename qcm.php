@@ -45,7 +45,7 @@
         </div>
 
         <div class="login-signup">
-            <span class="text"><a href="index.php" class="text signup-text">Retournez à l'acceuil</a></span>
+            <span class="text"><a href="index.php" class="text signup-text">Retournez à l'accueil</a></span>
         </div>
     </div>
 

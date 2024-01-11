@@ -36,6 +36,15 @@ CREATE TABLE `utilisateurs` (
   `date_inscription` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `themes` (
+  `theme_name` varchar(25) NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `easy_score` INT,
+  `medium_score` INT,
+  `hard_score` INT,
+  `total_score` INT
+);
+
 --
 -- Contenu de la table `utilisateurs`
 --
@@ -52,6 +61,9 @@ INSERT INTO `utilisateurs` (`username`, `password`, `email`, `date_inscription`)
 --
 ALTER TABLE `utilisateurs`
   ADD PRIMARY KEY (`email`);
+  
+ALTER TABLE `themes`
+  ADD PRIMARY KEY (`theme_name`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

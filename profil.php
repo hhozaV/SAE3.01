@@ -41,7 +41,6 @@ $connexion->close();
     <meta name="viewport" content="width=device-wdth, initial-scale=1.0">
     <title>Eduquiz</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/login.css">
     
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
@@ -61,7 +60,7 @@ $connexion->close();
         </div>
         <nav class="nav-bar">
             <ul>
-                <li><a href="index.php" class="active">Accueil</a></li>
+                <li><a href="index.php">Accueil</a></li>
                 <li><a href="themes.php">Thèmes</a></li>
                 <li><a href="lessons.php">Leçons</a></li>
                 <li><a href="survie.php">Mode Survie</a></li>
@@ -81,11 +80,13 @@ $connexion->close();
         </nav>
     </header>
     <div class="profil-container">
-        <h1>Profil de l'utilisateur</h1>
-        <p>Nom d'utilisateur : <?php echo htmlspecialchars($user['username']); ?></p>
-        <p>Email : <?php echo htmlspecialchars($user['email']); ?></p>
-        <a href="index.php">Retournez à l'accueil</a>
-        <a href="logout.php">Se déconnecter</a>
+        <div class="profile-card">
+            <h1>Profil de l'utilisateur</h1>
+            <p>Nom d'utilisateur : <?php echo htmlspecialchars($user['username']); ?></p>
+            <p>Email : <?php echo htmlspecialchars($user['email']); ?></p>
+            <a href="index.php">Retournez à l'accueil</a>
+            <a href="logout.php">Se déconnecter</a>
+        </div>
     </div>
 </body>
 </html>
