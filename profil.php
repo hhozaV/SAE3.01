@@ -22,7 +22,7 @@ if ($connexion->connect_error) {
 
 // Récupérer les informations de l'utilisateur
 $username = $_SESSION["utilisateur_username"];
-$requete = $connexion->prepare("SELECT username, email FROM utilisateurs WHERE username = ?");
+$requete = $connexion->prepare("SELECT username, email, date_inscription FROM utilisateurs WHERE username = ?");
 $requete->bind_param("s", $username);
 $requete->execute();
 $resultat = $requete->get_result();
@@ -81,10 +81,14 @@ $connexion->close();
     </header>
     <div class="profil-container">
         <div class="profile-card">
+            <img src="img/profil.svg" alt="Profil" class="profile-image">
             <h1>Profil de l'utilisateur</h1>
             <p>Nom d'utilisateur : <?php echo htmlspecialchars($user['username']); ?></p>
             <p>Email : <?php echo htmlspecialchars($user['email']); ?></p>
-            <a href="index.php">Retournez à l'accueil</a>
+            <p>Mot de passe : ********</p>
+            <p>Date d'inscription : <?php echo htmlspecialchars($user['date_inscription']); ?></p>
+            <a href="passwordedit.php" class="change-password-button">Changer de MDP</a>
+            <a href="index.php"">Retourner à l'accueil</a>
             <a href="logout.php">Se déconnecter</a>
         </div>
     </div>

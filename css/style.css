@@ -536,7 +536,7 @@ img {
     color: white;
 }
 
-/* Footer PHP */
+/* Footer CSS */
 
 .footer {
     width: 100%;
@@ -560,3 +560,65 @@ img {
     color: white; /* Couleur du lien */
     text-decoration: none; /* Enlève le soulignement par défaut */
 }
+
+
+/* Profil CSS */
+.profil-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh; /* Hauteur minimale de la vue */
+    padding: 20px; /* Ajout d'un peu d'espace autour de la carte */
+    box-sizing: border-box; /* S'assurer que le padding ne dépasse pas la hauteur et la largeur */
+}
+
+.profile-card {
+    width: 100%; /* Largeur pleine page */
+    max-width: 2000px; /* Maximum pour la lisibilité */
+    height: auto;
+    min-height: 88vh;
+    margin: auto; /* Centrage horizontal */
+    padding: 40px; /* Plus d'espace à l'intérieur de la carte */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    background-color: white;
+}
+
+.profile-card img.profile-image {
+    width: 150px; /* Taille de l'image ajustée */
+    height: 150px;
+    border-radius: 50%; /* Image ronde */
+    margin-bottom: 20px;
+    margin-top: 140px;
+}
+
+.profile-card h1 {
+    margin-bottom: 20px;
+}
+
+.profile-card p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.profile-card a {
+    display: inline-block; /* Change en inline-block pour un meilleur contrôle de la largeur */
+    width: auto; /* Largeur automatique basée sur le contenu */
+    max-width: 200px; /* Largeur maximale des boutons */
+    margin: 10px auto; /* Centrage horizontal des boutons */
+    padding: 12px 20px;
+    background-color: #0066ff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    text-align: center; /* Assure que le texte est centré dans le bouton */
+}
+
+.profile-card a:hover {
+    background-color: #265df2;
+}
+
+
