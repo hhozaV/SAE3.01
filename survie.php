@@ -23,7 +23,9 @@
     <div class="survie-container">
         <div class="card" id="rulesCard">
             <h1>Règles du jeu</h1>
-            <p>Le mode survie est un mode de jeu où vous devez répondre à un maximum de questions en un minimum de temps. Vous avez 10 secondes pour répondre à chaque question. Si vous répondez correctement, vous gagnez 1 point. Si vous répondez incorrectement, vous perdez 1 point. Si vous ne répondez pas, vous ne gagnez ni ne perdez de point.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </div>
 
         <div class="card" id="playCard">
