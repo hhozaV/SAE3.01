@@ -130,7 +130,7 @@ header {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    justify-self: center;
+    justify-content: space-between; /* Cela va éloigner le texte des images */
     margin: 0 auto;
     height: 90vh;
     background-color: #fefefe;
@@ -138,6 +138,13 @@ header {
     width: 100%;
     max-width: 1300px;
     padding: 0 50px;
+    gap: 50px;
+    padding-left: 20px;
+    margin-left: 160px;
+}
+
+.main_content {
+    margin-right: 20px;
 }
 
 .main_content h2 {
@@ -176,8 +183,8 @@ header {
 }
 
 #main_img {
-    height: 50%;
-    width: 140%;
+    max-width: 100%;
+    margin-left: 140px;
 }
 
 @media screen and (max-width: 900px) {
@@ -467,35 +474,45 @@ header {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    height: 800px;
+    height: 860px;
 }
+
 
 #rulesCard {
     background-color: #ffffff;
     margin-right: 10px;
+    flex: 1;
 }
 
 #rulesCard h1 {
+    margin-top: 20px;
     margin-bottom: 100px;
+}
+
+#rulesCard p {
+    margin-bottom: 150px;
+    padding: 0 50px 0 50px;
 }
 
 #playCard {
     background-color: #ffffff;
     margin-left: 10px;
+    flex: 2;
 }
 
 img {
-    max-width: 100%;
+    margin-top: 40px;
+    max-width: 80%;
     height: auto;
 }
 
 .survie-container button {
     background: #0066ff;
-    padding: 10px 100px;
-    font-size: 18px;
+    padding: 15px 150px;
+    font-size: 25px;
     border: none;
     border-radius: 10px;
-    margin: 100px auto;
+    margin: 150px auto;
     color: white;
     display: block;
     width: auto;
@@ -519,3 +536,27 @@ img {
     color: white;
 }
 
+/* Footer PHP */
+
+.footer {
+    width: 100%;
+    background-color: #363636; /* Couleur de fond du footer */
+    color: white; /* Couleur du texte */
+    display: flex;
+    justify-content: space-between; /* Répartit les éléments sur les deux côtés */
+    align-items: center; /* Centre les éléments verticalement */
+    padding: 10px 50px; /* Padding à l'intérieur du footer */
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 1200px; /* Largeur maximale du contenu du footer */
+    margin: 0 auto; /* Centre le contenu si la page est plus large que 1200px */
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-link {
+    color: white; /* Couleur du lien */
+    text-decoration: none; /* Enlève le soulignement par défaut */
+}
