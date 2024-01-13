@@ -451,3 +451,72 @@ header {
     margin-top: 30px;
     text-align: center;
 }
+
+/* Survie CSS */
+
+.survie-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+}
+
+.card {
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 800px;
+}
+
+#rulesCard {
+    background-color: #ffffff;
+    margin-right: 10px;
+}
+
+#rulesCard h1 {
+    margin-bottom: 100px;
+}
+
+#playCard {
+    background-color: #ffffff;
+    margin-left: 10px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.survie-container button {
+    background: #0066ff;
+    padding: 10px 100px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    margin: 100px auto;
+    color: white;
+    display: block;
+    width: auto;
+    text-align: center; 
+}
+
+.survie-container button:hover {
+    background: #265df2;
+}
+
+.survie-container button a {
+    color: white;
+    text-decoration: none;
+}
+
+.survie-container button a:visited {
+    color: white;
+}
+
+.survie-container button a:hover {
+    color: white;
+}
+

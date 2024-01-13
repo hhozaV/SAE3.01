@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-wdth, initial-scale=1.0">
     <title>Eduquiz</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <link rel="icon" href="img/cerveau.png" type="image/x-icon">
 </head>
 <body>
@@ -20,12 +20,17 @@
         <?php include "header.php"; ?>
     </header>
 
+    <div class="survie-container">
+        <div class="card" id="rulesCard">
+            <h1>Règles du jeu</h1>
+            <p>Le mode survie est un mode de jeu où vous devez répondre à un maximum de questions en un minimum de temps. Vous avez 10 secondes pour répondre à chaque question. Si vous répondez correctement, vous gagnez 1 point. Si vous répondez incorrectement, vous perdez 1 point. Si vous ne répondez pas, vous ne gagnez ni ne perdez de point.</p>
+        </div>
 
-    <div class="container">
-        <img class="warning "src="img/warning.svg" alt="Warning"/>
-        <h1 class="survie">Disponible prochainement</h1>
+        <div class="card" id="playCard">
+            <img src="img/survival.svg" alt="Survie">
+            <button><a href="surviePlay.php">Jouer</a></button>
+        </div>
     </div>
-    
 
     <script>
         hamburger = document.querySelector(".hamburger");
