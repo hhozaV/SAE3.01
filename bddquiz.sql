@@ -45,16 +45,6 @@ CREATE TABLE `themes` (
   `total_score` INT
 );
 
---
--- Contenu de la table `utilisateurs`
---
-
-INSERT INTO `utilisateurs` (`username`, `password`, `email`, `date_inscription`) VALUES
-('Barchon', '$2y$10$uPB6DZGkztBnyqRoQO4t5.zWnZXhxMxfdpcBS6Kt2ZAWjJ/HKfjXm', 'test@gmail.com', '2024-01-10 21:30:27');
-
---
--- Index pour les tables exportées
---
 
 --
 -- Index pour la table `utilisateurs`
@@ -68,3 +58,49 @@ ALTER TABLE `themes`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
+DELIMITER //
+
+CREATE PROCEDURE add_score(
+    IN p_email VARCHAR(60),
+    IN p_theme_name VARCHAR(25),
+    IN p_difficulty VARCHAR(10),
+    IN p_is_correct BOOLEAN
+)
+BEGIN
+    DECLARE score_increment INT;
+
+    -- Déterminer l'incrément de score en fonction de la difficulté
+    CASE p_difficulty
+        WHEN 'easy' THEN SET score_increment = 1;
+        WHEN 'medium' THEN SET score_increment = 2;
+        WHEN 'hard' THEN SET score_increment = 3;
+        ELSE SET score_increment = 0; -- Aucun incrément pour une difficulté inconnue
+    END CASE;
+
+    -- Vérifier si l'utilisateur existe dans la table utilisateurs
+    IF EXISTS (SELECT 1 FROM utilisateurs WHERE email = p_email) THEN
+        -- Vérifier si le thème existe dans la table themes
+        IF NOT EXISTS (SELECT 1 FROM themes WHERE theme_name = p_theme_name AND email = p_email) THEN
+            -- Ajouter une nouvelle ligne pour le thème de l'utilisateur s'il n'existe pas
+            INSERT INTO themes (theme_name, email, easy_score, medium_score, hard_score, total_score)
+            VALUES (p_theme_name, p_email, 0, 0, 0, 0);
+        END IF;
+
+        -- Mettre à jour les scores en fonction de la réponse correcte
+        IF p_is_correct THEN
+            UPDATE themes
+            SET
+                easy_score = easy_score + (score_increment * IF(p_difficulty = 'easy', 1, 0)),
+                medium_score = medium_score + (score_increment * IF(p_difficulty = 'medium', 1, 0)),
+                hard_score = hard_score + (score_increment * IF(p_difficulty = 'hard', 1, 0)),
+                total_score = total_score + score_increment
+            WHERE theme_name = p_theme_name AND email = p_email;
+        END IF;
+    END IF;
+END //
+
+DELIMITER ;
