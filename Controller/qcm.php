@@ -115,16 +115,31 @@
             }
         }
         function fetchQuestion() {
-            const apiUrl = "https://quizapi.io/api/v1/questions?apiKey=rQhtODxlCFj6WAfGessemTv2p46af9cIwwcpoLBr&category=" + theme + "&difficulty=" + difficulty + "&limit=1";
+            // const apiUrl = "https://quizapi.io/api/v1/questions?apiKey=rQhtODxlCFj6WAfGessemTv2p46af9cIwwcpoLBr&category=" + theme + "&difficulty=" + difficulty + "&limit=1";
 
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(decodedJson => {
-                    console.log("API :", decodedJson);
-                    const questionData = decodedJson[0];
-                    currentQuestionData = questionData;
-                    displayQuestion(questionData);
-                });
+            // fetch(apiUrl)
+            //     .then(response => response.json())
+            //     .then(decodedJson => {
+            //         console.log("API :", decodedJson);
+            //         const questionData = decodedJson[0];
+            //         currentQuestionData = questionData;
+            //         displayQuestion(questionData);
+            //     });
+            displayQuestion({
+                question: "Quel est le nom de la première femme de Zeus ?",
+                answers: {
+                    answer_a: "Héra",
+                    answer_b: "Déméter",
+                    answer_c: "Léto",
+                    answer_d: "Métis"
+                },
+                correct_answers: {
+                    answer_a_correct: "true",
+                    answer_b_correct: "false",
+                    answer_c_correct: "false",
+                    answer_d_correct: "false"
+                }
+            });
         }
 
         function displayQuestion(questionData) {
