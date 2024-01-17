@@ -10,7 +10,7 @@ if (!isset($_SESSION["utilisateur_username"])) {
 // Connexion à la base de données
 $serveur = "localhost";
 $utilisateur = "root";
-$mot_de_passe = "";
+$mot_de_passe = "root";
 $nom_base_de_donnees = "bddquiz";
 
 $connexion = new mysqli($serveur, $utilisateur, $mot_de_passe, $nom_base_de_donnees);
@@ -40,7 +40,7 @@ $connexion->close();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-wdth, initial-scale=1.0">
     <title>Eduquiz</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
     
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
@@ -48,7 +48,7 @@ $connexion->close();
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-    <link rel="icon" href="img/cerveau.png" type="image/x-icon">
+    <link rel="icon" href="../img/cerveau.png" type="image/x-icon">
 </head>
 <body>
     <header>
@@ -60,10 +60,10 @@ $connexion->close();
         </div>
         <nav class="nav-bar">
             <ul>
-                <li><a href="index.php" class="nav-link">Accueil</a></li>
-                <li><a href="themes.php" class="nav-link">Thèmes</a></li>
-                <li><a href="lessons.php" class="nav-link">Leçons</a></li>
-                <li><a href="survie.php" class="nav-link">Mode Survie</a></li>
+                <li><a href="../View/index.php" class="nav-link">Accueil</a></li>
+                <li><a href="../View/themes.php" class="nav-link">Thèmes</a></li>
+                <li><a href="../View/lessons.php" class="nav-link">Leçons</a></li>
+                <li><a href="../View/survie.php" class="nav-link">Mode Survie</a></li>
 
                 <?php
 
@@ -81,14 +81,14 @@ $connexion->close();
     </header>
     <div class="profil-container">
         <div class="profile-card">
-            <img src="img/profil.svg" alt="Profil" class="profile-image">
+            <img src="../img/profil.svg" alt="Profil" class="profile-image">
             <h1>Profil de l'utilisateur</h1>
             <p>Nom d'utilisateur : <?php echo htmlspecialchars($user['username']); ?></p>
             <p>Email : <?php echo htmlspecialchars($user['email']); ?></p>
             <p>Mot de passe : ********</p>
             <p>Date d'inscription : <?php echo htmlspecialchars($user['date_inscription']); ?></p>
             <a href="passwordedit.php" class="change-password-button">Changer de MDP</a>
-            <a href="index.php"">Retourner à l'accueil</a>
+            <a href="../View/index.php"">Retourner à l'accueil</a>
             <a href="logout.php">Se déconnecter</a>
         </div>
     </div>
