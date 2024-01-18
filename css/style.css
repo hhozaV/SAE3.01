@@ -536,29 +536,76 @@ img {
     color: white;
 }
 
+@media only screen and (max-width: 900px) {
+    .survie-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+        height: auto;
+        margin: 10px 0;
+    }
+
+    #playCard img {
+        max-width: 100%;
+    }
+
+    .survie-container button {
+        padding: 10px 20px;
+        font-size: 18px;
+        margin: 20px auto;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    header {
+        padding: 0 20px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .nav-bar ul li a {
+        font-size: 18px;
+        padding: 10px 20px;
+    }
+
+    #rulesCard p, #playCard p {
+        padding: 0 20px;
+    }
+
+    .survie-container button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
+
 /* Footer CSS */
 
 .footer {
     width: 100%;
-    background-color: #363636; /* Couleur de fond du footer */
-    color: white; /* Couleur du texte */
+    background-color: #363636;
+    color: white;
     display: flex;
-    justify-content: space-between; /* Répartit les éléments sur les deux côtés */
-    align-items: center; /* Centre les éléments verticalement */
-    padding: 10px 50px; /* Padding à l'intérieur du footer */
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
 }
 
 .footer-content {
     width: 100%;
-    max-width: 1200px; /* Largeur maximale du contenu du footer */
-    margin: 0 auto; /* Centre le contenu si la page est plus large que 1200px */
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
 }
 
 .footer-link {
-    color: white; /* Couleur du lien */
-    text-decoration: none; /* Enlève le soulignement par défaut */
+    color: white;
+    text-decoration: none;
 }
 
 
@@ -567,18 +614,18 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50vh; /* Hauteur minimale de la vue */
-    padding: 20px; /* Ajout d'un peu d'espace autour de la carte */
-    box-sizing: border-box; /* S'assurer que le padding ne dépasse pas la hauteur et la largeur */
+    height: 50vh;
+    padding: 20px; 
+    box-sizing: border-box;
 }
 
 .profile-card {
-    width: 100%; /* Largeur pleine page */
-    max-width: 2000px; /* Maximum pour la lisibilité */
+    width: 100%;
+    max-width: 2000px;
     height: auto;
     min-height: 88vh;
-    margin: auto; /* Centrage horizontal */
-    padding: 40px; /* Plus d'espace à l'intérieur de la carte */
+    margin: auto;
+    padding: 40px;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -587,9 +634,9 @@ img {
 }
 
 .profile-card img.profile-image {
-    width: 150px; /* Taille de l'image ajustée */
+    width: 150px;
     height: 150px;
-    border-radius: 50%; /* Image ronde */
+    border-radius: 50%;
     margin-bottom: 20px;
     margin-top: 140px;
 }
@@ -604,17 +651,17 @@ img {
 }
 
 .profile-card a {
-    display: inline-block; /* Change en inline-block pour un meilleur contrôle de la largeur */
-    width: auto; /* Largeur automatique basée sur le contenu */
-    max-width: 200px; /* Largeur maximale des boutons */
-    margin: 10px auto; /* Centrage horizontal des boutons */
+    display: inline-block;
+    width: auto;
+    max-width: 200px;
+    margin: 10px auto;
     padding: 12px 20px;
     background-color: #0066ff;
     color: white;
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s;
-    text-align: center; /* Assure que le texte est centré dans le bouton */
+    text-align: center;
 }
 
 .profile-card a:hover {
@@ -622,3 +669,54 @@ img {
 }
 
 
+/* About Section */
+.about-section {
+    background: #fff;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.about-section h1,
+.about-items h3 {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 10px;
+}
+
+.about-section p {
+    font-family: 'Josefin Sans', sans-serif;
+    margin-bottom: 20px;
+}
+
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.about-items {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Liens */
+.about-container a {
+    color: #333;
+    text-decoration: none;
+}
+
+.about-container a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+    }
+}
