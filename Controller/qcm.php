@@ -118,13 +118,13 @@
             const apiUrl = "https://quizapi.io/api/v1/questions?apiKey=rQhtODxlCFj6WAfGessemTv2p46af9cIwwcpoLBr&category=" + theme + "&difficulty=" + difficulty + "&limit=1";
 
             fetch(apiUrl)
-                .then(response => response.json())
-                .then(decodedJson => {
-                    console.log("API :", decodedJson);
-                    const questionData = decodedJson[0];
-                    currentQuestionData = questionData;
+            .then(response => response.json())
+            .then(decodedJson => {
+            console.log("API :", decodedJson);
+            const questionData = decodedJson[0];
+            currentQuestionData = questionData;
                     displayQuestion(questionData);
-                });
+            });
         }
 
         function displayQuestion(questionData) {
@@ -168,6 +168,19 @@
             const resultMessageElement = document.getElementById('result-message');
             if (isCorrect) {
                 resultMessageElement.textContent = "Bravo ! Tu as eu la bonne réponse !";
+                console.log(`Theme: ${theme}`);
+                console.log(`Difficulty: ${difficulty}`);
+
+                fetch('update_score.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `theme=${encodeURIComponent(theme)}&difficulty=${encodeURIComponent(difficulty)}`
+                })
+                .then(response => response.text())
+                .then(text => console.log(text))
+                .catch(error => console.error('Error:', error));
             } else {
                 resultMessageElement.textContent = "Désolé, ce n'est pas la bonne réponse...";
             }

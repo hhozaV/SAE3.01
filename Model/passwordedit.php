@@ -1,12 +1,6 @@
 <?php 
 session_start();
-// Connexion à la base de données (remplacez ces informations par les vôtres)
-$serveur = "localhost";
-$utilisateur = "root";
-$mot_de_passe = "root";
-$nom_base_de_donnees = "bddquiz";
-
-$connexion = new mysqli($serveur, $utilisateur, $mot_de_passe, $nom_base_de_donnees);
+include "db_connect.php";
 
 // Vérifier la connexion à la base de données
 if ($connexion->connect_error) {
