@@ -12,8 +12,8 @@ if ($connexion->connect_error) {
     die("La connexion à la base de données a échoué : " . $connexion->connect_error);
 }
 
-if (isset($_SESSION['utilisateur_email']) && isset($_POST['theme']) && isset($_POST['difficulty'])) {
-    $userEmail = $_SESSION['utilisateur_email'];
+if (isset($_SESSION['email']) && isset($_POST['theme']) && isset($_POST['difficulty'])) {
+    $userEmail = $_SESSION['email'];
     $theme = $_POST['theme'];
     $difficulty = $_POST['difficulty'];
 
