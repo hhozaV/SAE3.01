@@ -24,6 +24,7 @@
 <body>
     <div class="qcm">
         <h1 id="title">Question du QCM</h1>
+        <p id="difficulty-text">Difficulté actuelle : <span id="current-difficulty">Easy</span></p><br>
         <p id="question"></p>
         <div class="answers">
             <input type="checkbox" id="answer_a">
@@ -74,6 +75,9 @@
         let difficulty = 'Easy';
         let currentQuestionData;
 
+        const difficultyTextElement = document.getElementById('current-difficulty');
+        difficultyTextElement.textContent = difficulty;
+
         easyButton.addEventListener('click', () => {
             if (difficulty === 'Easy') {
                 alert('Il n\'y a pas de difficulté plus facile ...');
@@ -113,6 +117,7 @@
                 easyButton.disabled = false;
                 hardButton.disabled = true;
             }
+            difficultyTextElement.textContent = difficulty;
         }
         function fetchQuestion() {
             const apiUrl = "https://quizapi.io/api/v1/questions?apiKey=rQhtODxlCFj6WAfGessemTv2p46af9cIwwcpoLBr&category=" + theme + "&difficulty=" + difficulty + "&limit=1";
