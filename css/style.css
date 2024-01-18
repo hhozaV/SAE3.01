@@ -610,7 +610,17 @@ img {
 
 
 /* Profil CSS */
+.mainProfil-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
 .profil-container {
+    flex-basis: 40%;
+    max-width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -666,6 +676,48 @@ img {
 
 .profile-card a:hover {
     background-color: #265df2;
+}
+
+.scores-container {
+    flex-basis: 55%;
+    max-width: 55%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    margin: 20px;
+    box-sizing: border-box;
+}
+
+.scores-container h2 {
+    margin-bottom: 20px;
+}
+
+.scores-container table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.scores-container th,
+.scores-container td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Style pour rendre responsive */
+@media only screen and (max-width: 900px) {
+    .main-container {
+        flex-direction: column;
+    }
+    
+    .profil-container,
+    .scores-container {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
 }
 
 

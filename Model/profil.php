@@ -24,6 +24,13 @@ $requete->execute();
 $resultat = $requete->get_result();
 $user = $resultat->fetch_assoc();
 
+// Récupérer les scores de l'utilisateur
+$email = $_SESSION['utilisateur_email'];
+$requete_scores = $connexion->prepare("SELECT theme_name, difficulty, score FROM scores WHERE user_email = ? ORDER BY theme_name, difficulty");
+$requete_scores->bind_param("s", $email);
+$requete_scores->execute();
+$resultat_scores = $requete_scores->get_result();
+
 $requete->close();
 $connexion->close();
 ?>
@@ -75,18 +82,53 @@ $connexion->close();
             </ul>
         </nav>
     </header>
-    <div class="profil-container">
-        <div class="profile-card">
-            <img src="../img/profil.svg" alt="Profil" class="profile-image">
-            <h1>Profil de l'utilisateur</h1>
-            <p>Nom d'utilisateur : <?php echo htmlspecialchars($user['username']); ?></p>
-            <p>Email : <?php echo htmlspecialchars($user['email']); ?></p>
-            <p>Mot de passe : ********</p>
-            <p>Date d'inscription : <?php echo htmlspecialchars($user['date_inscription']); ?></p>
-            <a href="passwordedit.php" class="change-password-button">Changer de MDP</a>
-            <a href="../View/index.php"">Retourner à l'accueil</a>
-            <a href="logout.php">Se déconnecter</a>
+    <div class="mainProfil-container">
+        <div class="profil-container">
+            <div class="profile-card">
+                <img src="../img/profil.svg" alt="Profil" class="profile-image">
+                <h1>Profil de l'utilisateur</h1>
+                <p>Nom d'utilisateur : <?php echo htmlspecialchars($user['username']); ?></p>
+                <p>Email : <?php echo htmlspecialchars($user['email']); ?></p>
+                <p>Mot de passe : ********</p>
+                <p>Date d'inscription : <?php echo htmlspecialchars($user['date_inscription']); ?></p>
+                <a href="passwordedit.php" class="change-password-button">Changer de MDP</a>
+                <a href="../View/index.php"">Retourner à l'accueil</a>
+                <a href="logout.php">Se déconnecter</a>
+            </div>
         </div>
+        <div class="scores-container">
+            <h2>Scores</h2>
+            <?php 
+            $current_theme = null;
+            while ($score = $resultat_scores->fetch_assoc()):
+                if ($score['theme_name'] != $current_theme) {
+                    // Si le thème change, affichez un nouvel en-tête de thème
+                    if ($current_theme !== null) {
+                        // Fermez le tableau précédent s'il en existe un
+                        echo '</tbody></table>';
+                    }
+                    echo '<h3>' . htmlspecialchars($score['theme_name']) . '</h3>';
+                    echo '<table>
+                            <thead>
+                                <tr>
+                                    <th>Difficulté</th>
+                                    <th>Score</th>
+                                </tr>
+                            </thead>
+                            <tbody>';
+                    $current_theme = $score['theme_name'];
+                }
+            ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($score['difficulty']); ?></td>
+                    <td><?php echo htmlspecialchars($score['score']); ?></td>
+                </tr>
+            <?php endwhile; ?>
+                </tbody>
+            </table>
+        </div>
+
     </div>
+
 </body>
 </html>
