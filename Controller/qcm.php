@@ -183,6 +183,16 @@
             const resultMessageElement = document.getElementById('result-message');
             if (isCorrect) {
                 resultMessageElement.textContent = "Bravo ! Tu as eu la bonne réponse !";
+                fetch('update_score.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `theme=${encodeURIComponent(theme)}&difficulty=${encodeURIComponent(difficulty)}`
+                })
+                .then(response => response.text())
+                .then(text => console.log(text)) // Log the response for debugging
+                .catch(error => console.error('Error:', error));
             } else {
                 resultMessageElement.textContent = "Désolé, ce n'est pas la bonne réponse...";
             }
