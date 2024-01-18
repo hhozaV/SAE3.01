@@ -168,6 +168,9 @@
             const resultMessageElement = document.getElementById('result-message');
             if (isCorrect) {
                 resultMessageElement.textContent = "Bravo ! Tu as eu la bonne réponse !";
+                console.log(`Theme: ${theme}`);
+                console.log(`Difficulty: ${difficulty}`);
+
                 fetch('update_score.php', {
                     method: 'POST',
                     headers: {

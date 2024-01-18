@@ -7,11 +7,7 @@ if (!isset($_SESSION["utilisateur_username"])) {
     exit();
 }
 
-// Connexion à la base de données
-$serveur = "localhost";
-$utilisateur = "root";
-$mot_de_passe = "root";
-$nom_base_de_donnees = "bddquiz";
+include "db_connect.php";
 
 $connexion = new mysqli($serveur, $utilisateur, $mot_de_passe, $nom_base_de_donnees);
 

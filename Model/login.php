@@ -1,12 +1,5 @@
 <?php 
-session_start();
-// Connexion à la base de données (remplacez ces informations par les vôtres)
-$serveur = "localhost";
-$utilisateur = "root";
-$mot_de_passe = "root";
-$nom_base_de_donnees = "bddquiz";
-
-$connexion = new mysqli($serveur, $utilisateur, $mot_de_passe, $nom_base_de_donnees);
+include "db_connect.php";
 
 // Vérifier la connexion à la base de données
 if ($connexion->connect_error) {
@@ -18,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $motDePasse = $_POST["mot_de_passe"];
 
     // Vérifier les identifiants dans la base de données
-    $requete = $connexion->prepare("SELECT username, password FROM utilisateurs WHERE email = ?");
+    $requete = $connexion->prepare("SELECT username, password, email FROM utilisateurs WHERE email = ?");
     $requete->bind_param("s", $email);
     $requete->execute();
     $resultat = $requete->get_result();
@@ -29,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Identifiants corrects, rediriger vers index.php
             session_start();
             $_SESSION["utilisateur_username"] = $utilisateur["username"];
+            $_SESSION["utilisateur_email"] = $utilisateur["email"];
             header("Location: ../View/index.php");
             exit();
         } else {

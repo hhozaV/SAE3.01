@@ -1,19 +1,25 @@
 <?php
 session_start();
 
-// Connexion à la base de données (remplacez ces informations par les vôtres)
-$serveur = "localhost";
-$utilisateur = "root";
-$mot_de_passe = "root";
-$nom_base_de_donnees = "bddquiz";
-$connexion = new mysqli($serveur, $utilisateur, $mot_de_passe, $nom_base_de_donnees);
+include "../Model/db_connect.php";
 
 if ($connexion->connect_error) {
     die("La connexion à la base de données a échoué : " . $connexion->connect_error);
 }
 
-if (isset($_SESSION['email']) && isset($_POST['theme']) && isset($_POST['difficulty'])) {
-    $userEmail = $_SESSION['email'];
+if (!isset($_SESSION['utilisateur_email'])) {
+    echo "Email session not set";
+}
+if (!isset($_POST['theme'])) {
+    echo "Theme POST not set";
+}
+if (!isset($_POST['difficulty'])) {
+    echo "Difficulty POST not set";
+}
+
+
+if (isset($_SESSION['utilisateur_email']) && isset($_POST['theme']) && isset($_POST['difficulty'])) {
+    $userEmail = $_SESSION['utilisateur_email'];
     $theme = $_POST['theme'];
     $difficulty = $_POST['difficulty'];
 
