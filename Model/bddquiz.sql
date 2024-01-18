@@ -34,16 +34,23 @@ CREATE TABLE `utilisateurs` (
   `password` varchar(60) NOT NULL,
   `email` varchar(60) NOT NULL,
   `date_inscription` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE `themes` (
-  `theme_name` varchar(25) NOT NULL,
-  `email` varchar(60) NOT NULL,
-  `easy_score` INT,
-  `medium_score` INT,
-  `hard_score` INT,
-  `total_score` INT
-);
+-- Assurez-vous que la table utilisateurs utilise le moteur InnoDB
+ALTER TABLE utilisateurs ENGINE = InnoDB;
+
+-- Assurez-vous que l'email dans la table utilisateurs est unique et indexé
+ALTER TABLE utilisateurs
+ADD UNIQUE INDEX idx_email (email);
+
+CREATE TABLE `scores` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `user_email` VARCHAR(60) NOT NULL,
+  `theme_name` VARCHAR(25) NOT NULL,
+  `difficulty` ENUM('easy', 'medium', 'hard') NOT NULL,
+  `score` INT DEFAULT 0,
+  FOREIGN KEY (`user_email`) REFERENCES `utilisateurs`(`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 --
@@ -52,8 +59,6 @@ CREATE TABLE `themes` (
 ALTER TABLE `utilisateurs`
   ADD PRIMARY KEY (`email`);
   
-ALTER TABLE `themes`
-  ADD PRIMARY KEY (`theme_name`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
