@@ -31,6 +31,17 @@ $requete_scores->bind_param("s", $email);
 $requete_scores->execute();
 $resultat_scores = $requete_scores->get_result();
 
+// Récupérer le meilleur score en mode Survie de l'utilisateur
+$requete_survieBestScore = $connexion->prepare("SELECT survieBestScore FROM scores WHERE user_email = ? AND theme_name = 'Survie'");
+$requete_survieBestScore->bind_param("s", $email);
+$requete_survieBestScore->execute();
+$resultat_survieBestScore = $requete_survieBestScore->get_result();
+$survieBestScore = 0;
+if ($row = $resultat_survieBestScore->fetch_assoc()) {
+    $survieBestScore = $row['survieBestScore'];
+}
+$requete_survieBestScore->close();
+
 $requete->close();
 $connexion->close();
 ?>
@@ -126,6 +137,8 @@ $connexion->close();
             <?php endwhile; ?>
                 </tbody>
             </table>
+            <h2>Meilleur score en mode Survie</h2>
+            <p><?php echo htmlspecialchars($survieBestScore); ?></p>
         </div>
 
     </div>

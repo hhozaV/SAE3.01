@@ -75,6 +75,7 @@
 
         let difficulty = 'Easy';
         let currentQuestionData;
+        let currentScore = 0;
         
         function fetchQuestion() {
             const apiUrl = "https://quizapi.io/api/v1/questions?apiKey=rQhtODxlCFj6WAfGessemTv2p46af9cIwwcpoLBr&limit=1";
@@ -130,6 +131,7 @@
             const resultMessageElement = document.getElementById('result-message');
             if (isCorrect) {
                 resultMessageElement.textContent = "Bravo ! Tu as eu la bonne réponse !";
+                currentScore++;
             } else {
                 resultMessageElement.textContent = "Désolé, ce n'est pas la bonne réponse...";
             }
@@ -157,6 +159,17 @@
             validationButtonsContainer.style.display = 'block';
         }
 
+        function endGame() {
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "update_survie.php", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send("score=" + currentScore);
+            xhr.onload = function () {
+                console.log(this.responseText);
+            };
+        }
+
+
         fetchQuestion();
         function startCountdown() {
             let countdown = 60;
@@ -169,6 +182,7 @@
                 if (countdown < 0) {
                
                     clearInterval(countdownInterval);
+                    endGame();
                     window.location.href = '../View/survie.php'; 
                 }
             }, 1000);

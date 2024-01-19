@@ -1,49 +1,37 @@
-<?php session_start();
+<?php
+session_start();
+include "../Model/db_connect.php"; // Assurez-vous que ce chemin est correct
 
-include "../Model/db_connect.php";
+if (isset($_SESSION['utilisateur_email']) && isset($_POST['score'])) {
+    $email = $_SESSION['utilisateur_email'];
+    $currentScore = intval($_POST['score']);
 
-if ($connexion->connect_error) {
-    die("La connexion à la base de données a échoué : " . $connexion->connect_error);
-}
-
-if (!isset($_SESSION['utilisateur_email'])) {
-    echo "Email session not set";
-}
-if (!isset($_POST['theme'])) {
-    echo "Theme POST not set";
-}
-
-
-if (isset($_SESSION['utilisateur_email']) && isset($_POST['theme']) && isset($_POST['difficulty'])) {
-    $userEmail = $_SESSION['utilisateur_email'];
-    $theme = $_POST['theme'];
-    
-
-    $query = "SELECT * FROM scores WHERE user_email = ? AND theme_name = ? AND difficulty = ?";
-    $stmt = $connexion->prepare($query);
-    $stmt->bind_param("sss", $userEmail, $theme, $difficulty);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    if ($result->num_rows > 0) {
-        $updateQuery = "UPDATE scores SET score = score + 1 WHERE user_email = ? AND theme_name = ? AND difficulty = ?";
-        $updateStmt = $connexion->prepare($updateQuery);
-        $updateStmt->bind_param("sss", $userEmail, $theme, $difficulty);
-        $updateStmt->execute();
-        $updateStmt->close();
+    // Récupérer le meilleur score actuel de l'utilisateur pour le mode Survie
+    $requete = $connexion->prepare("SELECT survieBestScore FROM scores WHERE user_email = ? AND theme_name = 'Survie'");
+    $requete->bind_param("s", $email);
+    $requete->execute();
+    $resultat = $requete->get_result();
+    if ($row = $resultat->fetch_assoc()) {
+        $bestScore = $row['survieBestScore'];
+        if ($currentScore > $bestScore) {
+            // Mettre à jour le meilleur score
+            $updateRequete = $connexion->prepare("UPDATE scores SET survieBestScore = ? WHERE user_email = ? AND theme_name = 'Survie'");
+            $updateRequete->bind_param("is", $currentScore, $email);
+            $updateRequete->execute();
+            $updateRequete->close();
+            echo "Meilleur score mis à jour!";
+        } else {
+            echo "Le score actuel n'est pas supérieur au meilleur score.";
+        }
     } else {
-        $insertQuery = "INSERT INTO scores (user_email, theme_name, difficulty, score) VALUES (?, ?, ?, 1)";
-        $insertStmt = $connexion->prepare($insertQuery);
-        $insertStmt->bind_param("sss", $userEmail, $theme, $difficulty);
-        $insertStmt->execute();
-        $insertStmt->close();
+        // Si aucun score n'existe pour le mode Survie, créez-en un
+        $insertRequete = $connexion->prepare("INSERT INTO scores (user_email, theme_name, survieBestScore) VALUES (?, 'Survie', ?)");
+        $insertRequete->bind_param("si", $email, $currentScore);
+        $insertRequete->execute();
+        $insertRequete->close();
+        echo "Score pour le mode Survie créé et enregistré!";
     }
-    
-    $stmt->close();
-    echo "Score updated successfully.";
-} else {
-    echo "Required data not set in update_score.php";
+    $requete->close();
 }
-
 $connexion->close();
 ?>

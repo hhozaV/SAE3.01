@@ -772,3 +772,44 @@ img {
         flex-direction: column;
     }
 }
+
+/* Leaderboard CSS */
+.leaderboard-container {
+    width: 80%;
+    margin: 20px auto;
+    background: #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.leaderboard-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.leaderboard-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.leaderboard-container table th,
+.leaderboard-container table td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.leaderboard-container table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.leaderboard-container table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.leaderboard-container table tr:hover {
+    background-color: #f5f5f5;
+}
