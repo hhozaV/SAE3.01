@@ -1,5 +1,5 @@
 <?php
-include "db_connect.php"; // Assurez-vous que ce chemin est correct
+include "../Model/db_connect.php"; // Assurez-vous que ce chemin est correct
 
 $requete_leaderboard = $connexion->prepare("SELECT u.username, s.survieBestScore FROM utilisateurs u INNER JOIN scores s ON u.email = s.user_email WHERE s.theme_name = 'Survie' ORDER BY s.survieBestScore DESC");
 $requete_leaderboard->execute();
@@ -27,7 +27,7 @@ $resultat_leaderboard = $requete_leaderboard->get_result();
 </head>
 <body>
     <header>
-        <?php include "../View/header.php"; ?>
+        <?php include "header.php"; ?>
     </header>
 
     <div class="leaderboard-container">
