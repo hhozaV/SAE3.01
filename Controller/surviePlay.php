@@ -52,6 +52,10 @@
         <div class="login-signup">
             <span class="text"><a href="../View/index.php" class="text signup-text">Retournez à l'accueil</a></span>
         </div>
+        <div id="countdown-conteiner">Temps restant : <span id="countdown">60 </span>Secondes
+        </div>
+      
+
     </div>
 
     <script>
@@ -154,6 +158,25 @@
         }
 
         fetchQuestion();
+        function startCountdown() {
+            let countdown = 60;
+            const countdownElement = document.getElementById('countdown');
+
+            const countdownInterval = setInterval(function () {
+
+                countdownElement.textContent = countdown;
+                countdown--;
+                if (countdown < 0) {
+               
+                    clearInterval(countdownInterval);
+                    window.location.href = '../View/survie.php'; 
+                }
+            }, 1000);
+        }
+        
+        window.onload = function () {
+            startCountdown();
+        };
     </script>
 
 </body>

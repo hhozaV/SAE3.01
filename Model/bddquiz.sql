@@ -49,6 +49,7 @@ CREATE TABLE `scores` (
   `theme_name` VARCHAR(25) NOT NULL,
   `difficulty` ENUM('easy', 'medium', 'hard') NOT NULL,
   `score` INT DEFAULT 0,
+  `best_score_survie` INT DEFAULT 0,
   FOREIGN KEY (`user_email`) REFERENCES `utilisateurs`(`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
