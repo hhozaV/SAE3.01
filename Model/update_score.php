@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include "../Model/db_connect.php";
+include "db_connect.php";
 
 if ($connexion->connect_error) {
     die("La connexion à la base de données a échoué : " . $connexion->connect_error);

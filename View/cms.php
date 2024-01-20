@@ -53,10 +53,6 @@
         </div>
     </div>
 
-    <footer>
-        <?php include "footer.php"; ?>
-    </footer>
-
     <script>
         hamburger = document.querySelector(".hamburger");
         hamburger.onclick = function() {

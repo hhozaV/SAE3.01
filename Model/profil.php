@@ -112,6 +112,9 @@ $connexion->close();
             <?php 
             $current_theme = null;
             while ($score = $resultat_scores->fetch_assoc()):
+                if ($score['theme_name'] == 'Survie') {
+                    continue;
+                }
                 if ($score['theme_name'] != $current_theme) {
                     // Si le thème change, affichez un nouvel en-tête de thème
                     if ($current_theme !== null) {

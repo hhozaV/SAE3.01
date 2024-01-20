@@ -161,7 +161,7 @@
 
         function endGame() {
             const xhr = new XMLHttpRequest();
-            xhr.open("POST", "update_survie.php", true);
+            xhr.open("POST", "../Model/update_survie.php", true);
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhr.send("score=" + currentScore);
             xhr.onload = function () {

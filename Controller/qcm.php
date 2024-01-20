@@ -176,7 +176,7 @@
                 console.log(`Theme: ${theme}`);
                 console.log(`Difficulty: ${difficulty}`);
 
-                fetch('update_score.php', {
+                fetch('../Model/update_score.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
