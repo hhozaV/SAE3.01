@@ -52,7 +52,7 @@
         <div class="login-signup">
             <span class="text"><a href="../View/index.php" class="text signup-text">Retournez à l'accueil</a></span>
         </div>
-        <div id="countdown-conteiner">Temps restant : <span id="countdown">60 </span>Secondes
+        <div class="login-signup" id="countdown-container">Temps restant : <span id="countdown">60 </span> Secondes
         </div>
       
 

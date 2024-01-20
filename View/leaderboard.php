@@ -61,5 +61,9 @@ $resultat_leaderboard = $requete_leaderboard->get_result();
     $requete_leaderboard->close();
     $connexion->close();
     ?>
+
+    <footer>
+        <?php include "footer.php"; ?>
+    </footer>
 </body>
 </html>

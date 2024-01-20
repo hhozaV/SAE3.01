@@ -22,10 +22,11 @@
 
     <div class="survie-container">
         <div class="card" id="rulesCard">
-            <h1>Règles du jeu</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <h1>Explications</h1>
+            <p>Bienvenue dans le mode Survie, un mode "libre" où vous vous battez contre le chronomètre pour avoir le meilleur score ! Un classement des meilleurs joueurs est disponible, n'hésitez pas à allez jeter un coup d'oeil pour voir à quelle place vous vous classez.</p>
+            <p>Vous avez 60 secondes pour répondre à un maximum de question et donc obtenir le meilleur score puisque 1 bonne réponse = 1 point.</p>
+            <p>Les questions sont de thème et de difficulté aléatoire, d'où le terme "mode libre", votre seul ennemi est le temps.</p>
+            <button><a href="leaderboard.php">Voir le classement</a></button>
             
         </div>
 
@@ -34,6 +35,10 @@
             <button><a href="../Controller/surviePlay.php">Jouer</a></button>
         </div>
     </div>
+
+    <footer>
+        <?php include "footer.php"; ?>
+    </footer>
 
     <script>
         hamburger = document.querySelector(".hamburger");
