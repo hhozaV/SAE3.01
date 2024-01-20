@@ -1,9 +1,7 @@
 <?php
-include "../Model/db_connect.php"; // Assurez-vous que ce chemin est correct
-
-$requete_leaderboard = $connexion->prepare("SELECT u.username, s.survieBestScore FROM utilisateurs u INNER JOIN scores s ON u.email = s.user_email WHERE s.theme_name = 'Survie' ORDER BY s.survieBestScore DESC");
-$requete_leaderboard->execute();
-$resultat_leaderboard = $requete_leaderboard->get_result();
+session_start();
+include "../Model/db_connect.php";
+include "../Model/requests.php";
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +57,6 @@ $resultat_leaderboard = $requete_leaderboard->get_result();
     <?php
     // Fermer la requête et la connexion
     $requete_leaderboard->close();
-    $connexion->close();
     ?>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "db_connect.php"; // Assurez-vous que ce chemin est correct
+include "db_connect.php";
 
 if (isset($_SESSION['utilisateur_email']) && isset($_POST['score'])) {
     $email = $_SESSION['utilisateur_email'];
