@@ -707,16 +707,66 @@ img {
     border-bottom: 1px solid #ddd;
 }
 
-/* Style pour rendre responsive */
-@media only screen and (max-width: 900px) {
-    .main-container {
+@media only screen and (max-width: 768px) {
+    .mainProfil-container {
         flex-direction: column;
+        align-items: center;
+    }
+
+    .profil-container, .scores-container {
+        flex-basis: 80%;
+        max-width: 80%;
     }
     
-    .profil-container,
-    .scores-container {
-        flex-basis: 100%;
-        max-width: 100%;
+    header {
+        padding: 0 30px;
+    }
+    
+    .nav-bar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-bar ul li a {
+        padding: 10px 15px;
+    }
+}
+
+/* Media query pour les écrans petits (mobiles) */
+@media only screen and (max-width: 480px) {
+    .mainProfil-container {
+        padding: 10px;
+    }
+
+    .profil-container, .scores-container {
+        flex-basis: 90%;
+        max-width: 90%;
+    }
+    
+    header {
+        padding: 0 20px;
+    }
+    
+    .logo {
+        font-size: 24px;
+    }
+
+    .nav-bar ul li a {
+        font-size: 18px;
+        padding: 8px 20px;
+    }
+
+    .profile-card, .scores-container {
+        padding: 20px;
+    }
+
+    .profile-card img.profile-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-card h1 {
+        font-size: 1.5em;
     }
 }
 
