@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $motDePasse = $_POST["mot_de_passe"];
 
     // Vérifier les identifiants dans la base de données
-    $requete = $connexion->prepare("SELECT username, password, email FROM utilisateurs WHERE email = ?");
+    $requete = $connexion->prepare("SELECT username, password, role, email FROM utilisateurs WHERE email = ?");
     $requete->bind_param("s", $email);
     $requete->execute();
     $resultat = $requete->get_result();
@@ -23,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             session_start();
             $_SESSION["utilisateur_username"] = $utilisateur["username"];
             $_SESSION["utilisateur_email"] = $utilisateur["email"];
+            $_SESSION['utilisateur_role'] = $utilisateur['role'];
             header("Location: ../View/index.php");
             exit();
         } else {

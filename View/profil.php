@@ -48,11 +48,17 @@ include "../Model/requests.php";
 
                 // Vérifier si l'utilisateur est connecté
                 if (isset($_SESSION["utilisateur_username"])) {
-                    // Afficher le bouton Profil si l'utilisateur est connecté
-                    echo '<li><a href="profil.php" class="nav-link connect">Profil</a></li>';
+                    // L'utilisateur est connecté
+                    if (isset($_SESSION["utilisateur_role"]) && $_SESSION["utilisateur_role"] === 'admin') {
+                        // L'utilisateur est un admin
+                        echo '<li><a href="admin_panel.php" class="nav-link connect">Panel Admin</a></li>';
+                    } else {
+                        // L'utilisateur est connecté mais n'est pas admin
+                        echo '<li><a href="profil.php" class="nav-link connect">Profil</a></li>';
+                    }
                 } else {
-                    // Afficher le bouton Se Connecter si l'utilisateur n'est pas connecté
-                    echo '<li><a href="login.php" class="nav-link connect">Se connecter</a></li>';
+                    // L'utilisateur n'est pas connecté
+                    echo '<li><a href="../Model/login.php" class="nav-link connect">Se connecter</a></li>';
                 }
                 ?>
             </ul>
@@ -67,9 +73,10 @@ include "../Model/requests.php";
                 <p>Email : <?php echo htmlspecialchars($user['email']); ?></p>
                 <p>Mot de passe : ********</p>
                 <p>Date d'inscription : <?php echo htmlspecialchars($user['date_inscription']); ?></p>
-                <a href="passwordedit.php" class="change-password-button">Changer de MDP</a>
-                <a href="../View/index.php"">Retourner à l'accueil</a>
-                <a href="logout.php">Se déconnecter</a>
+                <a href="../Model/passwordedit.php" class="change-password-button">Changer de MDP</a>
+                <a href="index.php"">Retourner à l'accueil</a>
+                <a href="../Model/logout.php">Se déconnecter</a>
+                <a id="deleteAccountBtn">Supprimer mon compte</a>
             </div>
         </div>
         <div class="scores-container">
@@ -81,9 +88,7 @@ include "../Model/requests.php";
                     continue;
                 }
                 if ($score['theme_name'] != $current_theme) {
-                    // Si le thème change, affichez un nouvel en-tête de thème
                     if ($current_theme !== null) {
-                        // Fermez le tableau précédent s'il en existe un
                         echo '</tbody></table>';
                     }
                     echo '<h3>' . htmlspecialchars($score['theme_name']) . '</h3>';
@@ -109,7 +114,47 @@ include "../Model/requests.php";
             <p><?php echo htmlspecialchars($survieBestScore); ?></p>
         </div>
 
+        <div id="deleteConfirmPopup" class="popup-container" style="display:none;">
+            <div class="popup-content">
+                <h2>Êtes-vous sûr de vouloir définitivement supprimer votre compte ?</h2>
+                <a id="confirmDelete">Supprimer</a>
+                <a id="cancelDelete">Annuler</a>
+            </div>
+        </div>
+
     </div>
+
+    <script>
+        const deleteAccountBtn = document.getElementById('deleteAccountBtn');
+        const deleteConfirmPopup = document.getElementById('deleteConfirmPopup');
+        const cancelDelete = document.getElementById('cancelDelete');
+        const confirmDelete = document.getElementById('confirmDelete');
+
+        deleteAccountBtn.addEventListener('click', function() {
+            deleteConfirmPopup.style.display = 'flex';
+        });
+
+        cancelDelete.addEventListener('click', function() {
+            deleteConfirmPopup.style.display = 'none';
+        });
+
+        confirmDelete.addEventListener('click', function() {
+            fetch('../Model/delete_account.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'user_email=' + encodeURIComponent('<?php echo $_SESSION['utilisateur_email']; ?>')
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                window.location.href = '../Model/logout.php';
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+
 
 </body>
 </html>

@@ -46,15 +46,6 @@ $connexion->close();
     </div>
 </div>
 
-    <footer>
-        <?php include "footer.php"; ?>
-    </footer>
-
-    <!-- Mettez ici votre script JavaScript comme dans votre fichier principal -->
-</body>
-</html>
-
-
     <script>
         hamburger = document.querySelector(".hamburger");
         hamburger.onclick = function() {

@@ -33,8 +33,12 @@ CREATE TABLE `utilisateurs` (
   `username` varchar(25) NOT NULL,
   `password` varchar(60) NOT NULL,
   `email` varchar(60) NOT NULL,
-  `date_inscription` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `date_inscription` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `role` VARCHAR(10) DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `utilisateurs` (`username`, `password`, `email`, `date_inscription`, `role`) VALUES
+('Admin', '$2y$10$eEBd2ufT.aoPb4fILwzVkebvFs3t3nXuv8kXeayFLjPMUxTJIMN9y', 'admin@mail.com', '2024-01-21 18:16:24', 'admin');
 
 -- Assurez-vous que la table utilisateurs utilise le moteur InnoDB
 ALTER TABLE utilisateurs ENGINE = InnoDB;

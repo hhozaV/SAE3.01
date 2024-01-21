@@ -37,10 +37,16 @@
 
             // Vérifier si l'utilisateur est connecté
             if (isset($_SESSION["utilisateur_username"])) {
-                // Afficher le bouton Profil si l'utilisateur est connecté
-                echo '<li><a href="profil.php" class="nav-link connect">Profil</a></li>';
+                // L'utilisateur est connecté
+                if ($_SESSION["utilisateur_role"] === 'admin') {
+                    // L'utilisateur est un admin
+                    echo '<li><a href="admin_panel.php" class="nav-link connect">Panel Admin</a></li>';
+                } else {
+                    // L'utilisateur est connecté mais n'est pas admin
+                    echo '<li><a href="profil.php" class="nav-link connect">Profil</a></li>';
+                }
             } else {
-                // Afficher le bouton Se Connecter si l'utilisateur n'est pas connecté
+                // L'utilisateur n'est pas connecté
                 echo '<li><a href="../Model/login.php" class="nav-link connect">Se connecter</a></li>';
             }
             ?>
@@ -52,7 +58,7 @@
             // Récupérer le chemin de la page actuelle
             var currentPage = window.location.pathname.split("/").pop();
 
-            // Parcourir les liens de la navigation et ajouter la classe "active" au lien correspondant à la page actuelle
+            // Permet d'afficher la class "active" sur la bonne page
             $(".nav-link").each(function () {
                 if ($(this).attr("href") == currentPage) {
                     $(this).addClass("active");

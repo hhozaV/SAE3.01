@@ -160,13 +160,16 @@
         }
 
         function endGame() {
-            const xhr = new XMLHttpRequest();
-            xhr.open("POST", "../Model/update_survie.php", true);
-            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhr.send("score=" + currentScore);
-            xhr.onload = function () {
-                console.log(this.responseText);
-            };
+            fetch('../Model/update_survie.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: "score=" + encodeURIComponent(currentScore)
+                })
+                .then(response => response.text())
+                .then(text => console.log(text))
+                .catch(error => console.error('Error:', error));
         }
 
 

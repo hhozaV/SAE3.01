@@ -11,22 +11,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nomUtilisateur = $_POST["nom_utilisateur"];
     $email = $_POST["email"];
     $motDePasse = $_POST["mot_de_passe"];
+    $role = "user";
 
     // Vérifier les conditions pour le mot de passe
     if (strlen($motDePasse) < 8 || !preg_match("/[A-Z]/", $motDePasse) || !preg_match("/[0-9]/", $motDePasse) || !preg_match("/[^a-zA-Z0-9]/", $motDePasse)) {
         $erreur = "Le mot de passe doit avoir au moins 8 caractères avec au moins une majuscule, un chiffre et un caractère spécial.";
     } else {
-        // Hasher le mot de passe avant de l'insérer dans la base de données
+        // Permet de hasher le MDP
         $motDePasseHash = password_hash($motDePasse, PASSWORD_DEFAULT);
 
-        // Insérer les données dans la base de données
         $requete = $connexion->prepare("INSERT INTO utilisateurs (username, password, email) VALUES (?, ?, ?)");
         $requete->bind_param("sss", $nomUtilisateur, $motDePasseHash, $email);
 
         if ($requete->execute()) {
-            // Inscription réussie, rediriger vers une page de confirmation par exemple
+            // Inscription réussie
             $_SESSION["utilisateur_username"] = $nomUtilisateur;
             $_SESSION['utilisateur_email'] = $email;
+            $_SESSION['utilisateur_role'] = $role;
             header("Location: ../View/index.php");
             exit();
         } else {

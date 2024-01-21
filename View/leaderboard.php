@@ -55,7 +55,6 @@ include "../Model/requests.php";
         </table>
     </div>
     <?php
-    // Fermer la requête et la connexion
     $requete_leaderboard->close();
     ?>
 </body>

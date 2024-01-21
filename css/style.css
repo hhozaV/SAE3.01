@@ -660,7 +660,7 @@ img {
     line-height: 1.6;
 }
 
-.profile-card a {
+.profile-card a, .popup-content a {
     display: inline-block;
     width: auto;
     max-width: 200px;
@@ -674,8 +674,9 @@ img {
     text-align: center;
 }
 
-.profile-card a:hover {
+.profile-card a:hover, .popup-content a:hover {
     background-color: #265df2;
+    cursor: pointer;
 }
 
 .scores-container {
@@ -706,6 +707,38 @@ img {
     padding: 8px;
     border-bottom: 1px solid #ddd;
 }
+
+.popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.popup-content h2 {
+    margin-bottom: 20px;
+}
+
+.popup-content button {
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
 
 @media only screen and (max-width: 768px) {
     .mainProfil-container {
@@ -862,4 +895,76 @@ img {
 
 .leaderboard-container table tr:hover {
     background-color: #f5f5f5;
+}
+
+/* Panel Admin CSS */
+/* Style commun des containers de formulaire */
+.form-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: white;
+}
+
+/* Style des titres de formulaire */
+.form-container h1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Style des groupes de formulaires */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Style des labels de formulaire */
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Style des inputs et select de formulaire */
+.form-group input[type="text"],
+.form-group input[type="url"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    width: auto;
+    padding: 10px 15px;
+    background-color: #0066ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+
+button[type="submit"]:hover {
+    background-color: #265df2;
+}
+
+
+.add-lesson-container,
+.delete-lesson-container {
+    margin-bottom: 40px;
+}
+
+/* Adaptations responsives */
+@media only screen and (max-width: 768px) {
+    .form-container {
+        width: 90%;
+        padding: 15px;
+    }
 }

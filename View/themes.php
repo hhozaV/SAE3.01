@@ -82,7 +82,7 @@
             // Stocker le thème dans le stockage local
             localStorage.setItem('selectedTheme', theme);
 
-            // Rediriger vers la page 2
+            // Rediriger vers la page QCM
             window.location.href = '../Controller/qcm.php';
         }
     </script>

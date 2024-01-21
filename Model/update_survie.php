@@ -24,7 +24,7 @@ if (isset($_SESSION['utilisateur_email']) && isset($_POST['score'])) {
             echo "Le score actuel n'est pas supérieur au meilleur score.";
         }
     } else {
-        // Si aucun score n'existe pour le mode Survie, créez-en un
+        // Si aucun score n'existe pour le mode Survie, on en créé un
         $insertRequete = $connexion->prepare("INSERT INTO scores (user_email, theme_name, survieBestScore) VALUES (?, 'Survie', ?)");
         $insertRequete->bind_param("si", $email, $currentScore);
         $insertRequete->execute();

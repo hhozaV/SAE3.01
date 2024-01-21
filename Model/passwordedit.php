@@ -29,8 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $updateRequete->execute();
             $updateRequete->close();
 
-            // Redirection vers index.php ou autre page
-            header("Location: ../View/index.php");
+            header("Location: ../View/profil.php");
             exit();
         } else {
             $erreur = "Mot de passe actuel incorrect.";
@@ -68,11 +67,9 @@ $connexion->close();
 <div class="form-body">
         <div class="form-container">
             <div class="forms">
-                <!-- Register Page -->
                 <div class="form-login">
                     <span class="title">Modifier votre mot de passe</span>
 
-                    <!-- Formulaire d'inscription -->
                     <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                     <div class="input-field">
                             <input type="email" name="email" placeholder="E-Mail" required>
@@ -89,7 +86,6 @@ $connexion->close();
                             <i class="uil uil-eye-slash showHidePw"></i>
                         </div>
 
-                        <!-- Affichage du message d'erreur -->
                         <?php if (isset($erreur)) : ?>
                             <div class="erreur-message"><?php echo $erreur; ?></div>
                         <?php endif; ?>

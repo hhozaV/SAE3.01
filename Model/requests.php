@@ -10,7 +10,7 @@ if ($connexion->connect_error) {
 
 // Récupérer les informations de l'utilisateur
 $username = $_SESSION["utilisateur_username"];
-$requete = $connexion->prepare("SELECT username, email, date_inscription FROM utilisateurs WHERE username = ?");
+$requete = $connexion->prepare("SELECT username, email, role, date_inscription FROM utilisateurs WHERE username = ?");
 $requete->bind_param("s", $username);
 $requete->execute();
 $resultat = $requete->get_result();
