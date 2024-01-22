@@ -1,12 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.5.4.1
--- http://www.phpmyadmin.net
---
--- Client :  localhost
--- Généré le :  Jeu 11 Janvier 2024 à 08:09
--- Version du serveur :  5.7.11
--- Version de PHP :  7.0.3
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -23,7 +14,6 @@ DROP DATABASE IF EXISTS `bddquiz`;
 CREATE DATABASE IF NOT EXISTS `bddquiz`;
 USE `bddquiz`;
 
--- --------------------------------------------------------
 
 --
 -- Structure de la table `utilisateurs`
@@ -40,10 +30,8 @@ CREATE TABLE `utilisateurs` (
 INSERT INTO `utilisateurs` (`username`, `password`, `email`, `date_inscription`, `role`) VALUES
 ('Admin', '$2y$10$eEBd2ufT.aoPb4fILwzVkebvFs3t3nXuv8kXeayFLjPMUxTJIMN9y', 'admin@mail.com', '2024-01-21 18:16:24', 'admin');
 
--- Assurez-vous que la table utilisateurs utilise le moteur InnoDB
 ALTER TABLE utilisateurs ENGINE = InnoDB;
 
--- Assurez-vous que l'email dans la table utilisateurs est unique et indexé
 ALTER TABLE utilisateurs
 ADD UNIQUE INDEX idx_email (email);
 
@@ -115,7 +103,7 @@ ALTER TABLE `utilisateurs`
 
 
 
-
+-- Première procédure pour ajouter un score à un utilisateur mais qui n'a pas abouti, on la laisse quand même pour montrer nos démarches.
 DELIMITER //
 
 CREATE PROCEDURE add_score(
@@ -127,24 +115,19 @@ CREATE PROCEDURE add_score(
 BEGIN
     DECLARE score_increment INT;
 
-    -- Déterminer l'incrément de score en fonction de la difficulté
     CASE p_difficulty
         WHEN 'easy' THEN SET score_increment = 1;
         WHEN 'medium' THEN SET score_increment = 2;
         WHEN 'hard' THEN SET score_increment = 3;
-        ELSE SET score_increment = 0; -- Aucun incrément pour une difficulté inconnue
+        ELSE SET score_increment = 0;
     END CASE;
 
-    -- Vérifier si l'utilisateur existe dans la table utilisateurs
     IF EXISTS (SELECT 1 FROM utilisateurs WHERE email = p_email) THEN
-        -- Vérifier si le thème existe dans la table themes
         IF NOT EXISTS (SELECT 1 FROM themes WHERE theme_name = p_theme_name AND email = p_email) THEN
-            -- Ajouter une nouvelle ligne pour le thème de l'utilisateur s'il n'existe pas
             INSERT INTO themes (theme_name, email, easy_score, medium_score, hard_score, total_score)
             VALUES (p_theme_name, p_email, 0, 0, 0, 0);
         END IF;
 
-        -- Mettre à jour les scores en fonction de la réponse correcte
         IF p_is_correct THEN
             UPDATE themes
             SET
