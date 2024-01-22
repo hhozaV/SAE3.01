@@ -83,9 +83,6 @@ $connexion->close();
                             <input type="submit" value="Se connecter">
                         </div>
                     </form>
-                    <div class="login-signup">
-                        <span class="text"><a href="passwordedit.php" class="text signup-text">Mot de passe oublié</a></span>
-                    </div>
 
                     <!-- Affichage du message d'erreur -->
                     <?php if (isset($erreur)) : ?>
