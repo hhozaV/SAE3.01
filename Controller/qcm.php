@@ -146,6 +146,7 @@
                     checkbox.classList.add('hidden');
                 }
             });
+            
             const answerCCheckbox = document.getElementById('answer_c');
             const answerCLabel = document.getElementById('label_c');
             if (questionData.answers.answer_c === null) {
