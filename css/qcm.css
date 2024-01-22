@@ -54,3 +54,7 @@ input[type="checkbox"] {
     color: #0066ff;
     text-decoration: none;
 }
+
+.hidden {
+    display: none;
+}

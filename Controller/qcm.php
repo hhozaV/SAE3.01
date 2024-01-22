@@ -146,6 +146,23 @@
                     checkbox.classList.add('hidden');
                 }
             });
+            const answerCCheckbox = document.getElementById('answer_c');
+            const answerCLabel = document.getElementById('label_c');
+            if (questionData.answers.answer_c === null) {
+                answerCCheckbox.classList.add('hidden');
+                answerCLabel.textContent = '';
+            } else {
+                answerCCheckbox.classList.remove('hidden');
+            }
+
+            const answerDCheckbox = document.getElementById('answer_d');
+            const answerDLabel = document.getElementById('label_d');
+            if (questionData.answers.answer_d === null) {
+                answerDCheckbox.classList.add('hidden');
+                answerDLabel.textContent = '';
+            } else {
+                answerDCheckbox.classList.remove('hidden');
+            }
 
             checkboxes.forEach(checkbox => {
                 checkbox.checked = false;
