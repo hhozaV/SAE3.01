@@ -587,11 +587,6 @@ img {
         font-size: 24px;
     }
 
-    .nav-bar ul li a {
-        font-size: 18px;
-        padding: 10px 20px;
-    }
-
     #rulesCard p, #playCard p {
         padding: 0 20px;
     }
@@ -769,19 +764,6 @@ img {
         flex-basis: 80%;
         max-width: 80%;
     }
-    
-    header {
-        padding: 0 30px;
-    }
-    
-    .nav-bar ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .nav-bar ul li a {
-        padding: 10px 15px;
-    }
 }
 
 @media only screen and (max-width: 480px) {
@@ -792,19 +774,6 @@ img {
     .profil-container, .scores-container {
         flex-basis: 90%;
         max-width: 90%;
-    }
-    
-    header {
-        padding: 0 20px;
-    }
-    
-    .logo {
-        font-size: 24px;
-    }
-
-    .nav-bar ul li a {
-        font-size: 18px;
-        padding: 8px 20px;
     }
 
     .profile-card, .scores-container {
