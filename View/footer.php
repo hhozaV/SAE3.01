@@ -8,7 +8,7 @@
 <footer class="footer">
     <div class="footer-content">
         <a href="about.php" class="footer-link">À propos</a>
-        <div class="footer-text">Créé par Antoine, Clément et Martin</div>
+        <div class="footer-text">Créé par Antoine, Clément et Martin - BUT Informatique Nevers</div>
     </div>
 </footer>
 
