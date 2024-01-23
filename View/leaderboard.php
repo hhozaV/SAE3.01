@@ -1,7 +1,10 @@
 <?php
 session_start();
 include "../Model/db_connect.php";
-include "../Model/requests.php";
+
+$requete_leaderboard = $connexion->prepare("SELECT u.username, s.survieBestScore FROM utilisateurs u INNER JOIN scores s ON u.email = s.user_email WHERE s.theme_name = 'Survie' ORDER BY s.survieBestScore DESC");
+$requete_leaderboard->execute();
+$resultat_leaderboard = $requete_leaderboard->get_result();
 ?>
 
 <!DOCTYPE html>
